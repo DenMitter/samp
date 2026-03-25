@@ -1,4 +1,4 @@
-html {
+ html {
   scroll-behavior: smooth;
 }
 
@@ -3252,6 +3252,351 @@ body.is-modal-open {
   .mvpTransactionPrimaryAction,
   .mvpTransactionSecondaryAction {
     width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .content {
+    overflow-x: clip;
+  }
+
+  .mvpHeader-inner {
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mvpHeader-brand {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .mvpHeader-nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 14px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .mvpHeader-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mvpHeader-actions {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .mvpHeader-link,
+  .mvpHeader-logout,
+  .mvpHeader-user,
+  .mvpHeader-nav a {
+    font-size: 14px;
+  }
+
+  .mvpHeroWrap {
+    padding-top: 18px;
+    padding-bottom: 24px;
+  }
+
+  .sectionHero-inner,
+  .grid.grid--verticalCenter,
+  .siteFeatures,
+  .reputation-inner,
+  .section-footer-actions,
+  .defaultFooter-container,
+  .defaultFooter-links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHero-content,
+  .sectionHero-carousel,
+  .grid-col,
+  .grid-col--desktopSmall-5,
+  .grid-col--desktopSmall-6,
+  .grid-col--desktopSmall-10,
+  .grid-col--flushRight,
+  .grid-col--tablet-5 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .sectionHero-title,
+  .sectionHeading-title,
+  .apiIntroduction-title {
+    font-size: 32px;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .sectionHero-desc,
+  .sectionHeading-subTitle,
+  .apiIntroduction-desc,
+  .licensing-subtitle {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .sectionHero-content {
+    gap: 18px;
+  }
+
+  .calculator,
+  .calculator-form,
+  .defaultForm-group {
+    width: 100%;
+  }
+
+  .defaultForm-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .calculator-form .field,
+  .calculator-form .field-input,
+  .calculator-form .defaultSelect,
+  .calculator-form .defaultSelect-select,
+  .calculator-form .defaultInput {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .calculator-price .field-input {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .calculator-price .field-prefix,
+  .calculator-price .field-prefix-wrapper {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .calculator-price .field-prefix-label {
+    font-size: 14px;
+  }
+
+  .mvpHero-button,
+  .btn.btn--large,
+  .section-footer-btn,
+  .siteFeatures-cta,
+  .mvpSectionCta .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .sectionHero-carousel {
+    margin-top: 12px;
+  }
+
+  .sectionHero-upsell {
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+
+  .sectionHero-upsell-title {
+    display: grid;
+    justify-items: start;
+    gap: 14px;
+  }
+
+  .sectionHero-upsell-logo {
+    transform: scale(0.82);
+    transform-origin: left top;
+  }
+
+  .sectionHero-upsell-text {
+    max-width: none;
+    font-size: 22px;
+    line-height: 1.14;
+  }
+
+  .sectionHero-upsell-list {
+    margin-top: 8px;
+  }
+
+  .sectionHero-upsell-item {
+    align-items: flex-start;
+  }
+
+  .sectionHero-upsell-desc {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .reputation {
+    padding-top: 12px;
+  }
+
+  .reputation-inner {
+    gap: 12px;
+  }
+
+  .reputation-item {
+    min-width: 0;
+  }
+
+  .reputation-item--stats,
+  .reputation-item--bbb {
+    grid-column: 1 / -1;
+  }
+
+  .section {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .section-header {
+    margin-bottom: 22px;
+  }
+
+  .steps-list.mvpSimpleSteps {
+    gap: 14px;
+  }
+
+  .mvpSimpleSteps .steps-step {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    padding: 16px 0;
+    text-align: left;
+  }
+
+  .mvpStepVisual {
+    margin: 0;
+  }
+
+  .steps-title {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .siteFeatures {
+    gap: 14px;
+  }
+
+  .siteFeatures-item {
+    padding: 18px 16px;
+  }
+
+  .siteFeatures-iconHolder {
+    margin-bottom: 12px;
+  }
+
+  .siteFeatures-title {
+    font-size: 18px;
+  }
+
+  .siteFeatures-desc {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .mvpSectionCta {
+    gap: 16px;
+    margin-top: 24px;
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .mvpSectionCta-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .apiIntroduction {
+    overflow: hidden;
+  }
+
+  .apiIntroduction .grid {
+    gap: 18px;
+  }
+
+  .apiIntroduction-figure {
+    margin: 0;
+  }
+
+  .apiIntroduction-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .licensing-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .defaultFooter {
+    padding-top: 36px;
+    padding-bottom: 32px;
+  }
+
+  .mvpFooter-grid {
+    gap: 20px;
+  }
+
+  .defaultFooter-item {
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .defaultFooter-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .sectionHero-title,
+  .sectionHeading-title,
+  .apiIntroduction-title {
+    font-size: 28px;
+  }
+
+  .sectionHero-desc,
+  .sectionHeading-subTitle,
+  .apiIntroduction-desc,
+  .licensing-subtitle {
+    font-size: 14px;
+  }
+
+  .sectionHero-upsell {
+    padding: 18px 14px;
+  }
+
+  .sectionHero-upsell-logo {
+    transform: scale(0.72);
+  }
+
+  .sectionHero-upsell-text {
+    font-size: 19px;
+  }
+
+  .mvpSectionCta {
+    padding: 16px 14px;
+  }
+
+  .siteFeatures-item,
+  .mvpSimpleSteps .steps-step {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }
 
