@@ -1,0 +1,3252 @@
+html {
+  scroll-behavior: smooth;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body.mvp-body {
+  background: #fff;
+}
+
+a,
+button,
+.mvpStepVisual,
+.mvpServiceIcon,
+.reputation-item,
+.siteFeatures-item,
+.apiIntroduction-figure img {
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.mvpHeader {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.mvpHeader--light {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid rgba(79, 105, 131, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.mvpHeader--dark {
+  background: #0d4b70;
+  box-shadow: 0 2px 12px rgba(6, 39, 59, 0.18);
+}
+
+.mvpHeader-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 64px;
+}
+
+.mvpHeader-brand {
+  color: #01426a;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.mvpHeader--dark .mvpHeader-brand {
+  color: #fff;
+}
+
+.mvpHeader-nav,
+.mvpHeader-actions,
+.mvpSectionCta-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mvpHeader-nav a,
+.mvpHeader-link {
+  color: #4f6983;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.mvpHeader--dark .mvpHeader-nav a,
+.mvpHeader--dark .mvpHeader-link,
+.mvpHeader--dark .mvpHeader-user,
+.mvpHeader--dark .mvpHeader-logout {
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.mvpHeader-nav a:hover,
+.mvpHeader-link:hover {
+  color: #01426a;
+}
+
+.mvpHeader--dark .mvpHeader-nav a:hover,
+.mvpHeader--dark .mvpHeader-link:hover,
+.mvpHeader--dark .mvpHeader-logout:hover {
+  color: #fff;
+}
+
+.mvpHeader-link--strong {
+  font-weight: 600;
+}
+
+.mvpHeader-actions--user {
+  gap: 14px;
+}
+
+.mvpHeader-user {
+  color: #01426a;
+  font-weight: 600;
+}
+
+.mvpHeader-logout {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #4f6983;
+  cursor: pointer;
+  font: inherit;
+}
+
+.mvpHeader-logout:hover {
+  color: #01426a;
+}
+
+.mvpHeroWrap {
+  padding-top: 32px;
+  padding-bottom: 36px;
+}
+
+.mvpHero-button {
+  min-width: 210px;
+}
+
+.calculator-price .field-prefix-wrapper {
+  min-width: 148px;
+}
+
+.calculator-price .field-prefix-label {
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.calculator-price .defaultInput {
+  padding-left: 0;
+}
+
+.calculator-price .field-input {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  align-items: center;
+}
+
+.calculator-price .field-prefix {
+  position: static;
+  width: 148px;
+  min-width: 148px;
+  max-width: 148px;
+}
+
+.calculator-price #field-price {
+  width: 100%;
+  min-width: 0;
+}
+
+.sectionHero-carousel {
+  max-width: 610px;
+}
+
+.sectionHero-upsell {
+  min-height: 100%;
+}
+
+.sectionHero-upsell:hover,
+.siteFeatures-item:hover,
+.reputation-item:hover {
+  transform: translateY(-2px);
+}
+
+.sectionHero-upsell-text,
+.sectionHero-upsell-desc {
+  word-break: normal;
+}
+
+.sectionHero-upsell-text {
+  max-width: 320px;
+}
+
+.sectionHero-upsell-list {
+  margin-top: 16px;
+}
+
+.sectionHero-upsell-item.is-disabled {
+  opacity: 1;
+}
+
+.mvpSimpleSteps .steps-step {
+  padding-top: 6px;
+}
+
+.mvpStepVisual,
+.mvpServiceIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #eaf7ed;
+  color: #3cb95d;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mvpStepVisual {
+  margin: 0 auto 14px;
+}
+
+.mvpServiceIcon {
+  margin: 0 auto;
+}
+
+.mvpSectionCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 38px;
+}
+
+.mvpSectionCta p {
+  margin: 0;
+  color: #4f6983;
+}
+
+.mvpSectionCta a:not(.btn) {
+  color: #01426a;
+}
+
+.apiIntroduction-figure img:hover {
+  transform: translateY(-2px);
+}
+
+.mvpFooter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.mvpModal[hidden],
+.mvpToast[hidden] {
+  display: none;
+}
+
+.mvpModal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+
+.mvpModal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 66, 106, 0.28);
+}
+
+.mvpModal-dialog {
+  position: relative;
+  width: min(92vw, 440px);
+  margin: 88px auto;
+  padding: 32px 30px 28px;
+  border: 1px solid rgba(79, 105, 131, 0.16);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(1, 66, 106, 0.16);
+}
+
+.mvpModal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  border: 0;
+  background: transparent;
+  color: #4f6983;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.mvpModal-tabs {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(79, 105, 131, 0.16);
+}
+
+.mvpModal-tab {
+  padding: 0 0 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: #4f6983;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.mvpModal-tab.is-active {
+  border-color: #3cb95d;
+  color: #01426a;
+}
+
+.mvpModal-panel {
+  display: none;
+}
+
+.mvpModal-panel.is-active {
+  display: block;
+}
+
+.mvpModal-title {
+  margin: 0 0 20px;
+  color: #01426a;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.mvpAuthForm {
+  display: grid;
+  gap: 16px;
+}
+
+.mvpAuthField {
+  display: grid;
+  gap: 8px;
+  color: #4f6983;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.mvpAuthField input {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 18px;
+  border: 1px solid rgba(79, 105, 131, 0.22);
+  border-radius: 4px;
+  outline: none;
+  color: #01426a;
+  font: inherit;
+  background: #fff;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.mvpAuthField input:focus {
+  border-color: #01426a;
+  box-shadow: 0 0 0 3px rgba(1, 66, 106, 0.08);
+}
+
+.mvpAuthSubmit {
+  justify-self: start;
+  min-width: 210px;
+  margin-top: 8px;
+}
+
+.mvpModalMessage {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid #01426a;
+  border-radius: 4px;
+  background: #f5f9fc;
+  color: #01426a;
+}
+
+.mvpModalMessage.is-error {
+  border-left-color: #a33030;
+  background: #fff4f4;
+  color: #a33030;
+}
+
+.mvpAuthPage {
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+.mvpAuthMain {
+  padding: 16px 0 32px;
+}
+
+.mvpAuthCard {
+  width: min(100%, 700px);
+  margin: 0 auto;
+  padding: 30px 26px 32px;
+  border: 1px solid #dde3ea;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(17, 49, 75, 0.06);
+}
+
+.mvpAuthCard-title {
+  margin: 0 0 18px;
+  color: #575f66;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: clamp(22px, 2vw, 26px);
+  font-weight: 700;
+  text-align: center;
+}
+
+.mvpAuthStandaloneForm {
+  width: min(100%, 500px);
+  margin: 0 auto;
+}
+
+.mvpAuthStandaloneField {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.mvpAuthStandaloneField > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #414f60;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.mvpAuthRequired {
+  color: #ff4f4f;
+}
+
+.mvpAuthStandaloneInput {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  border: 1px solid #b7c6d1;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.mvpAuthStandaloneIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  color: #606b74;
+  font-size: 16px;
+}
+
+.mvpAuthStandaloneInput input {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  padding: 0 12px;
+  border: 0;
+  border-left: 1px solid #b7c6d1;
+  outline: none;
+  color: #1b2f43;
+  font: inherit;
+  font-size: 15px;
+}
+
+.mvpAuthCaptcha {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  margin-bottom: 18px;
+  padding: 0 14px;
+  border: 1px solid #d9dde3;
+  border-radius: 3px;
+  color: #1b2f43;
+  font-size: 15px;
+}
+
+.mvpAuthPrimaryButton,
+.mvpAuthSecondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 46px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mvpAuthPrimaryButton {
+  border: 0;
+  background: #40be5b;
+  color: #fff;
+  cursor: pointer;
+}
+
+.mvpAuthPrimaryButton:hover {
+  background: #36ab50;
+}
+
+.mvpAuthSecondaryButton {
+  border: 2px solid #40be5b;
+  background: #fff;
+  color: #40be5b;
+}
+
+.mvpAuthRecover {
+  display: block;
+  margin: 14px 0 10px;
+  color: #1a85ff;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.mvpAuthDivider {
+  margin: 0 0 12px;
+  color: #5b6670;
+  font-size: 14px;
+  text-align: center;
+}
+
+.mvpAuthInlineMessage {
+  width: min(100%, 500px);
+  margin: 14px auto 0;
+  padding: 10px 12px;
+  border-left: 3px solid #a33030;
+  border-radius: 4px;
+  background: #fff4f4;
+  color: #a33030;
+  font-size: 14px;
+}
+
+.mvpToast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 220;
+  max-width: min(92vw, 360px);
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #01426a;
+  color: #fff;
+  box-shadow: 0 18px 50px rgba(1, 66, 106, 0.25);
+}
+
+.mvpAccountBody {
+  background: #f4f6fb;
+}
+
+.mvpAccountNotice {
+  background: #0d3d5c;
+  color: #fff;
+}
+
+.mvpAccountNotice-inner {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.mvpAccountNotice-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 7px;
+  font-weight: 700;
+}
+
+.mvpAccountNotice p {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+}
+
+.mvpAccountActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.mvpAccountCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 210px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 4px;
+  background: #40be5b;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mvpAccountCta:hover {
+  background: #34a74d;
+  color: #fff;
+}
+
+.mvpAccountAvatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #1f6da4;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 19px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mvpAccountAvatar--header {
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+}
+
+.mvpAccountMain {
+  padding: 28px 0 48px;
+}
+
+.mvpAccountShell {
+  max-width: 1320px;
+}
+
+.mvpAccountPageHeader {
+  margin-bottom: 26px;
+}
+
+.mvpAccountTitle {
+  margin: 0 0 28px;
+  color: #0d4b70;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.mvpAccountTabs {
+  display: flex;
+  gap: 34px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #cfd4ea;
+}
+
+.mvpAccountTab {
+  padding: 0 0 12px;
+  border: 0;
+  border-bottom: 4px solid transparent;
+  background: transparent;
+  color: #7873a7;
+  cursor: pointer;
+  font: inherit;
+  font-size: 17px;
+}
+
+.mvpAccountTab.is-active {
+  border-bottom-color: #0d4b70;
+  color: #0d4b70;
+  font-weight: 700;
+}
+
+.mvpAccountPanel {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(28, 56, 90, 0.12);
+  overflow: hidden;
+}
+
+.mvpAccountToolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+}
+
+.mvpAccountSearch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: #f0edff;
+}
+
+.mvpAccountSearch input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #4d4c73;
+  font: inherit;
+  font-size: 16px;
+}
+
+.mvpAccountSearch input::placeholder {
+  color: #7a78a6;
+}
+
+.mvpAccountSearchIcon {
+  color: #7974a7;
+  font-size: 20px;
+}
+
+.mvpAccountFilterButton {
+  min-height: 56px;
+  padding: 0 22px;
+  border: 1px solid #cbc8e8;
+  border-radius: 8px;
+  background: #fff;
+  color: #47456d;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.mvpAccountCount {
+  justify-self: end;
+  color: #7974a7;
+  font-size: 16px;
+}
+
+.mvpAccountTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mvpAccountTable thead th {
+  padding: 18px 20px;
+  background: #f1effb;
+  color: #3b385b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.mvpAccountTable tbody td {
+  padding: 18px 20px;
+  border-top: 1px solid #dfdef1;
+  color: #2e3252;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.mvpAccountId {
+  font-weight: 700;
+}
+
+.mvpAccountName {
+  margin: 0 0 8px;
+  color: #2f3150;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mvpAccountMeta {
+  margin: 0;
+  color: #7673a4;
+  font-size: 14px;
+}
+
+.mvpAccountAmount {
+  display: grid;
+  gap: 4px;
+  font-weight: 700;
+}
+
+.mvpAccountAmountCurrency {
+  color: #7673a4;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mvpAccountBadgeStack {
+  display: grid;
+  gap: 12px;
+}
+
+.mvpAccountBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.mvpAccountBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.mvpAccountBadge--yellow {
+  background: #fff0a9;
+  color: #7f7d08;
+}
+
+.mvpAccountBadge--red {
+  background: #ffe3df;
+  color: #df1710;
+}
+
+.mvpAccountBadge--green {
+  background: #dbf5df;
+  color: #2b8e42;
+}
+
+.mvpAccountEmptyRow td {
+  color: #7673a4;
+}
+
+.mvpAccountSummaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.mvpAccountSummaryCard {
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(28, 56, 90, 0.12);
+}
+
+.mvpAccountSummaryLabel {
+  display: block;
+  margin-bottom: 10px;
+  color: #7673a4;
+  font-size: 14px;
+}
+
+.mvpAccountSummaryValue {
+  color: #0d4b70;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.mvpAccountFooter {
+  padding: 54px 0 70px;
+  background: #0d3d5c;
+}
+
+.mvpAccountFooterGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.5fr 1fr 1fr;
+  gap: 34px;
+}
+
+.mvpAccountFooterGrid h3 {
+  margin: 0 0 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.mvpAccountFooterGrid a,
+.mvpAccountLanguage {
+  display: block;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.mvpAccountFooterGrid a:hover {
+  color: #fff;
+}
+
+.mvpStartMain {
+  padding: 20px 0 34px;
+}
+
+.mvpStartCard {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 28px 34px 32px;
+  border: 1px solid #dde5ee;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(28, 56, 90, 0.07);
+}
+
+.mvpStartCardHeader {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e4e8ef;
+}
+
+.mvpStartCardHeader h1 {
+  margin: 0;
+  color: #0d4b70;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.mvpStartForm {
+  display: grid;
+  gap: 20px;
+}
+
+.mvpStartGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.mvpStartGrid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mvpStartGrid--two {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.mvpStartField {
+  display: grid;
+  gap: 8px;
+}
+
+.mvpStartField.is-full {
+  grid-column: 1 / -1;
+}
+
+.mvpStartField > span,
+.mvpStartSection h2 {
+  color: #646b75;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mvpStartFieldLabelGhost {
+  visibility: hidden;
+}
+
+.mvpStartSection h2 {
+  margin: 0 0 14px;
+  color: #535a63;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mvpStartField input,
+.mvpStartField select,
+.mvpStartField textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid #c7cfd8;
+  border-radius: 6px;
+  outline: none;
+  background: #fff;
+  color: #202737;
+  font: inherit;
+  font-size: 15px;
+}
+
+.mvpStartField textarea {
+  min-height: 88px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  resize: vertical;
+}
+
+.mvpStartField input:focus,
+.mvpStartField select:focus,
+.mvpStartField textarea:focus {
+  border-color: #0d4b70;
+  box-shadow: 0 0 0 3px rgba(13, 75, 112, 0.08);
+}
+
+.mvpStartField small {
+  display: none;
+  color: #ff3a31;
+  font-size: 12px;
+}
+
+.mvpStartField small:not(:empty) {
+  display: block;
+}
+
+.mvpStartMessage {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 3px solid #a33030;
+  border-radius: 4px;
+  background: #fff4f4;
+  color: #a33030;
+  font-size: 14px;
+}
+
+.mvpStartActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mvpStartSubmit {
+  min-width: 154px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 8px;
+  background: #d9dde3;
+  color: #8d9298;
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mvpStartSubmit:not(:disabled) {
+  background: #0d4b70;
+  color: #fff;
+}
+
+.mvpStartDynamicFields {
+  display: grid;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.mvpStartDynamicFields .mvpStartSection {
+  display: grid;
+  gap: 16px;
+}
+
+.mvpStartDynamicFields .mvpStartSection h2 {
+  margin-bottom: 0;
+}
+
+.mvpStartDynamicFields .mvpStartGrid {
+  gap: 18px;
+}
+
+.mvpReviewMain {
+  padding: 24px 0 40px;
+}
+
+.mvpReviewCard {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 28px 34px 32px;
+  border: 1px solid #dde5ee;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(28, 56, 90, 0.07);
+}
+
+.mvpReviewHeader {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e4e8ef;
+}
+
+.mvpReviewHeader h1 {
+  margin: 0;
+  color: #0d4b70;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.mvpReviewForm {
+  display: grid;
+  gap: 24px;
+}
+
+.mvpReviewSection {
+  display: grid;
+  gap: 14px;
+}
+
+.mvpReviewSectionHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.mvpReviewSectionHeading h2 {
+  margin: 0;
+  color: #535a63;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mvpReviewLink {
+  color: #2b80f5;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.mvpReviewLinkButton {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.mvpReviewGrid {
+  display: grid;
+  gap: 18px 24px;
+}
+
+.mvpReviewGrid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mvpReviewGrid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mvpReviewField {
+  display: grid;
+  gap: 8px;
+}
+
+.mvpReviewField.is-full {
+  grid-column: 1 / -1;
+}
+
+.mvpReviewField > span {
+  color: #646b75;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mvpReviewField input,
+.mvpReviewField select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid #c7cfd8;
+  border-radius: 6px;
+  outline: none;
+  background: #fff;
+  color: #202737;
+  font: inherit;
+  font-size: 15px;
+}
+
+.mvpReviewField input:focus,
+.mvpReviewField select:focus {
+  border-color: #0d4b70;
+  box-shadow: 0 0 0 3px rgba(13, 75, 112, 0.08);
+}
+
+.mvpReviewField small {
+  display: none;
+  color: #ff3a31;
+  font-size: 12px;
+}
+
+.mvpReviewField small:not(:empty) {
+  display: block;
+}
+
+.mvpReviewAssetCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  padding: 16px 18px;
+  border: 1px solid #d8e1ea;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.mvpReviewAssetInfo {
+  display: grid;
+  gap: 4px;
+  color: #4d5660;
+  font-size: 14px;
+  line-height: 1.5;
+  min-width: 0;
+}
+
+.mvpReviewAssetInfo strong {
+  color: #202737;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mvpReviewAssetInfo span,
+.mvpReviewAssetInfo strong {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mvpReviewAssetPrice {
+  color: #202737;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mvpReviewSummary {
+  display: grid;
+  gap: 12px;
+}
+
+.mvpReviewSummary > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #4d5660;
+  font-size: 15px;
+}
+
+.mvpReviewSummary strong {
+  color: #202737;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mvpReviewSummaryInline select {
+  min-width: 164px;
+  min-height: 36px;
+  padding: 0 28px 0 8px;
+  border: 0;
+  background: transparent;
+  color: #2b9c48;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mvpReviewSummary .is-separator {
+  height: 1px;
+  background: #e4e8ef;
+}
+
+.mvpReviewHint {
+  margin: 0;
+  color: #5c6773;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+}
+
+.mvpReviewAgreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #4d5660;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.mvpReviewAgreement input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.mvpReviewAgreement a {
+  color: #2b80f5;
+  text-decoration: none;
+}
+
+.mvpReviewActions {
+  display: flex;
+  justify-content: center;
+}
+
+.mvpReviewSubmit {
+  min-width: 240px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 8px;
+  background: #d9dde3;
+  color: #8d9298;
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mvpReviewSubmit:not(:disabled) {
+  background: #0d4b70;
+  color: #fff;
+}
+
+.mvpCreatedHeader {
+  background: #0d4b70;
+  box-shadow: 0 2px 10px rgba(8, 48, 86, 0.08);
+}
+
+.mvpCreatedHeaderInner {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.mvpCreatedBrand,
+.mvpCreatedHelp {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mvpCreatedBrand {
+  font-size: 20px;
+}
+
+.mvpCreatedMain {
+  padding: 20px 0 36px;
+}
+
+.mvpCreatedCard {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 26px 22px 24px;
+  border: 1px solid #dde5ee;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(28, 56, 90, 0.07);
+  text-align: center;
+}
+
+.mvpCreatedTitle {
+  margin: 0 0 10px;
+  color: #4b4d67;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.mvpCreatedLead {
+  width: min(100%, 520px);
+  margin: 0 auto 18px;
+  color: #4f5870;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.mvpCreatedQrWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.mvpCreatedQr {
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+}
+
+.mvpCreatedShare {
+  width: min(100%, 360px);
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
+.mvpCreatedShareLabel,
+.mvpCreatedUrlLabel {
+  margin: 0 0 8px;
+  color: #596271;
+  font-size: 13px;
+}
+
+.mvpCreatedShareGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mvpCreatedShareItem {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: #596271;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.mvpCreatedShareIcon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mvpCreatedShareItem--wa .mvpCreatedShareIcon {
+  background: #42c95a;
+}
+
+.mvpCreatedShareItem--email .mvpCreatedShareIcon {
+  background: #4a9cf4;
+}
+
+.mvpCreatedShareItem--messenger .mvpCreatedShareIcon {
+  background: #1e7eef;
+}
+
+.mvpCreatedShareItem--twitter .mvpCreatedShareIcon {
+  background: #5aa8ea;
+}
+
+.mvpCreatedUrlBlock {
+  width: min(100%, 560px);
+  margin: 0 auto 22px;
+  text-align: left;
+}
+
+.mvpCreatedUrlRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  background: #f4f7fb;
+}
+
+.mvpCreatedUrlValue {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: #2b80f5;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.mvpCreatedCopy {
+  min-width: 150px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #2b80f5;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+}
+
+.mvpCreatedActions {
+  display: flex;
+  justify-content: center;
+}
+
+.mvpCreatedButton {
+  min-width: 360px;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border-radius: 8px;
+  background: #3cbc59;
+  box-shadow: 0 8px 16px rgba(60, 188, 89, 0.18);
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mvpHelpCard {
+  width: min(100%, 980px);
+  text-align: left;
+}
+
+.mvpHelpIntro h1,
+.mvpHelpSection h2,
+.mvpHelpContact h2 {
+  margin: 0 0 12px;
+  color: #123f67;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.mvpHelpIntro p,
+.mvpHelpFaqItem p,
+.mvpHelpContact p {
+  margin: 0;
+  color: #4d617d;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.mvpHelpGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.mvpHelpSection {
+  border: 1px solid #d6e2f0;
+  border-radius: 18px;
+  padding: 24px;
+  background: #f8fbff;
+}
+
+.mvpHelpFaqList {
+  display: grid;
+  gap: 18px;
+}
+
+.mvpHelpFaqItem strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #123f67;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mvpHelpContact {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid #dbe4f0;
+}
+
+.mvpHelpContactLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.mvpHelpContactLinks a {
+  color: #2f66c7;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mvpHelpContactLinks a:hover {
+  text-decoration: underline;
+}
+
+.mvpSupportChat[hidden] {
+  display: none;
+}
+
+.mvpSupportChat {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+}
+
+.mvpSupportChat-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 25, 44, 0.46);
+}
+
+.mvpSupportChat-dialog {
+  position: relative;
+  width: min(100% - 32px, 460px);
+  margin: 72px 24px 24px auto;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 44px rgba(13, 46, 82, 0.26);
+  overflow: hidden;
+}
+
+.mvpSupportChat-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px 14px;
+  background: #0d4b70;
+  color: #fff;
+}
+
+.mvpSupportChat-header strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 20px;
+}
+
+.mvpSupportChat-header span {
+  display: block;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.mvpSupportChat-close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.mvpSupportChat-messages {
+  max-height: 320px;
+  overflow-y: auto;
+  display: grid;
+  gap: 12px;
+  padding: 18px 20px;
+  background: #f7fbff;
+}
+
+.mvpSupportChat-message {
+  display: flex;
+}
+
+.mvpSupportChat-message span {
+  max-width: 88%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.mvpSupportChat-message--support span {
+  background: #eaf3ff;
+  color: #20466d;
+}
+
+.mvpSupportChat-message--user {
+  justify-content: flex-end;
+}
+
+.mvpSupportChat-message--user span {
+  background: #2f66c7;
+  color: #fff;
+}
+
+.mvpSupportChat-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  padding: 14px 20px 0;
+}
+
+.mvpSupportChat-contacts a {
+  color: #2f66c7;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mvpSupportChat-form {
+  display: grid;
+  gap: 12px;
+  padding: 16px 20px 20px;
+}
+
+.mvpSupportChat-form textarea {
+  min-height: 92px;
+  resize: vertical;
+  padding: 14px 16px;
+  border: 1px solid #cfdceb;
+  border-radius: 14px;
+  color: #1e3551;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.mvpSupportChat-form textarea:focus {
+  outline: none;
+  border-color: #2f66c7;
+  box-shadow: 0 0 0 4px rgba(47, 102, 199, 0.12);
+}
+
+.mvpSupportChat-form button {
+  justify-self: end;
+  min-width: 140px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #3cbc59;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mvpLegalMain {
+  padding: 36px 0 64px;
+}
+
+.mvpPayMain {
+  padding: 20px 0 28px;
+}
+
+.mvpPayCard {
+  width: min(100%, 840px);
+  margin: 0 auto;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(28, 56, 90, 0.07);
+  overflow: hidden;
+}
+
+.mvpPayTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 18px;
+  padding: 22px 22px 20px;
+}
+
+.mvpPayAsset,
+.mvpPayTotals {
+  display: grid;
+  gap: 10px;
+}
+
+.mvpPayAsset strong {
+  color: #233452;
+  font-size: 16px;
+  font-weight: 700;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mvpPayAsset span,
+.mvpPayTotalLine {
+  color: #3f4f63;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.mvpPayAsset span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mvpPayTotals {
+  justify-items: end;
+}
+
+.mvpPayTotalLine {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.mvpPayTotalLine--grand {
+  color: #34b854;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mvpPayProgress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+  padding: 20px 22px;
+  border-top: 1px solid #e1e8f0;
+}
+
+.mvpPayStep {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+  color: #b7c5d1;
+}
+
+.mvpPayStep::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: calc(-50% + 18px);
+  width: calc(100% - 36px);
+  height: 2px;
+  background: #b7c5d1;
+}
+
+.mvpPayStep:first-child::before {
+  display: none;
+}
+
+.mvpPayStep span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #b7c5d1;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mvpPayStep strong {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.mvpPayStep.is-active {
+  color: #1da739;
+}
+
+.mvpPayStep.is-active span {
+  border-color: #35bd4f;
+  color: #35bd4f;
+}
+
+.mvpPayForm {
+  display: grid;
+  gap: 14px;
+  padding: 18px 22px 24px;
+  border-top: 1px solid #e1e8f0;
+}
+
+.mvpPayForm h1 {
+  margin: 0 0 2px;
+  color: #233452;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mvpPayForm .mvpReviewField textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: 12px 14px;
+  border: 1px solid #c7cfd8;
+  border-radius: 6px;
+  outline: none;
+  background: #fff;
+  color: #202737;
+  resize: vertical;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.mvpPayForm .mvpReviewField textarea:focus {
+  border-color: #0d4b70;
+  box-shadow: 0 0 0 3px rgba(13, 75, 112, 0.08);
+}
+
+.mvpPayOption {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto 22px;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 14px;
+  border-top: 1px solid #e3e9f0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mvpPayOption input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mvpPayOptionCheck {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #92a4bb;
+  border-radius: 999px;
+  position: relative;
+  justify-self: end;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mvpPayOptionCheck::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  background: #1f74f2;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.mvpPayOption:has(input[type="radio"]:checked) {
+  background: #f7fbff;
+  box-shadow: inset 0 0 0 1px #cfe0f4;
+}
+
+.mvpPayOption:has(input[type="radio"]:checked) .mvpPayOptionCheck {
+  border-color: #1f74f2;
+  box-shadow: 0 0 0 3px rgba(31, 116, 242, 0.12);
+}
+
+.mvpPayOption:has(input[type="radio"]:checked) .mvpPayOptionCheck::after {
+  transform: scale(1);
+}
+
+.mvpPayOptionIcon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #f2f5fa;
+  font-size: 20px;
+}
+
+.mvpPayOptionBody {
+  display: grid;
+  gap: 4px;
+}
+
+.mvpPayOptionBody strong {
+  color: #233452;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mvpPayOptionBody small {
+  color: #526174;
+  font-size: 13px;
+}
+
+.mvpPayWalletButton {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #2e67bd;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.mvpPayActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.mvpPayFooter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 0 16px 22px;
+}
+
+.mvpPayFooter a {
+  color: #4e5c70;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.mvpWalletDialog {
+  width: min(92vw, 700px);
+  margin-top: 80px;
+  padding: 26px 26px 22px;
+}
+
+.mvpWalletBox {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.mvpWalletLabel {
+  color: #596271;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mvpWalletAddressRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.mvpWalletAddress {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #f4f7fb;
+  color: #21406a;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mvpWalletSeedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mvpWalletSeed {
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #fff;
+  color: #33425b;
+  font-size: 14px;
+}
+
+.mvpWalletSeed strong {
+  color: #2e67bd;
+}
+
+.mvpAdminWalletPreview {
+  display: grid;
+  gap: 8px;
+}
+
+.mvpAdminWalletPreview code {
+  display: block;
+  max-width: 240px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  color: #233452;
+  font-size: 12px;
+}
+
+.mvpLegalCard {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 32px 36px 40px;
+  border: 1px solid #dde5ee;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(28, 56, 90, 0.07);
+}
+
+.mvpLegalHeader {
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e4e8ef;
+}
+
+.mvpLegalEyebrow {
+  margin: 0 0 10px;
+  color: #4f6983;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mvpLegalHeader h1 {
+  margin: 0 0 14px;
+  color: #0d4b70;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.mvpLegalHeader p {
+  margin: 0;
+  color: #566575;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.mvpLegalContent {
+  display: grid;
+  gap: 24px;
+}
+
+.mvpLegalContent section {
+  display: grid;
+  gap: 10px;
+}
+
+.mvpLegalContent h2 {
+  margin: 0;
+  color: #23384c;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.mvpLegalContent p {
+  margin: 0;
+  color: #4f5b68;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.mvpReviewHelpDialog {
+  width: min(92vw, 640px);
+  margin-top: 120px;
+  padding: 28px 30px 26px;
+}
+
+.mvpReviewHelpTitle {
+  margin: 0 0 26px;
+  color: #4f575e;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.mvpReviewHelpContent {
+  display: grid;
+  gap: 24px;
+  color: #545e68;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.mvpReviewHelpContent strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #4f575e;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.mvpReviewHelpContent p {
+  margin: 0;
+}
+
+.mvpReviewHelpActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.mvpReviewHelpButton {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #38b55a;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+body.is-modal-open {
+  overflow: hidden;
+}
+
+.mvpStartAddon {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 6px;
+  padding: 16px 18px;
+  border: 1px solid #d8e1ea;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.mvpStartAddon input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.mvpStartAddon strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #2c9d49;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mvpStartAddon small {
+  display: block;
+  color: #556274;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mvpStartAddon em {
+  align-self: start;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #edf4ff;
+  color: #3f74c4;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mvpAccountRowLink {
+  cursor: pointer;
+}
+
+.mvpAccountRowLink:hover td {
+  background: #fafbfe;
+}
+
+.mvpTransactionLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.15fr) minmax(300px, 1fr);
+  gap: 20px;
+}
+
+.mvpTransactionMain,
+.mvpTransactionSidebar {
+  display: grid;
+  gap: 20px;
+}
+
+.mvpTransactionCard,
+.mvpTransactionSideCard {
+  padding: 28px;
+  border: 1px solid #d7e0ea;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(28, 56, 90, 0.08);
+}
+
+.mvpTransactionSideCard {
+  background: #eef6ff;
+}
+
+.mvpTransactionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.mvpTransactionTitle {
+  margin: 0 0 10px;
+  color: #0d3d72;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.mvpTransactionRef {
+  margin: 0 0 10px;
+  color: #44516c;
+  font-size: 18px;
+}
+
+.mvpTransactionLead {
+  margin: 0;
+  color: #33425b;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.mvpTransactionBadge {
+  flex-shrink: 0;
+}
+
+.mvpTransactionPartyCard {
+  margin-bottom: 20px;
+  padding: 18px 20px;
+  border: 1px solid #dbe4ef;
+  border-radius: 12px;
+  background: #f8fbff;
+}
+
+.mvpTransactionPartyTitle {
+  margin: 0 0 12px;
+  color: #2f5ea9;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mvpTransactionPartyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mvpTransactionPartyItem {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.mvpTransactionPartyLabel {
+  color: #627086;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mvpTransactionPartyItem strong {
+  color: #233452;
+  font-size: 16px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mvpTransactionProgress {
+  margin-bottom: 22px;
+}
+
+.mvpTransactionTimeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mvpTransactionStep {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  text-align: center;
+  color: #4b5a71;
+  font-size: 14px;
+}
+
+.mvpTransactionStep::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: calc(-50% + 20px);
+  width: calc(100% - 40px);
+  height: 1px;
+  background: #b6c4d2;
+}
+
+.mvpTransactionStep:first-child::before {
+  display: none;
+}
+
+.mvpTransactionStep span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #a8b8c8;
+  border-radius: 50%;
+  background: #fff;
+  color: #4b5a71;
+  font-weight: 700;
+}
+
+.mvpTransactionStep strong {
+  font-weight: 500;
+}
+
+.mvpTransactionStep.is-active span,
+.mvpTransactionStep.is-complete span {
+  border-color: #2e67bd;
+  background: #2e67bd;
+  color: #fff;
+}
+
+.mvpTransactionStep.is-complete::before,
+.mvpTransactionStep.is-active::before {
+  background: #2e67bd;
+}
+
+.mvpTransactionActionBox {
+  display: grid;
+  gap: 20px;
+  padding: 28px;
+  border: 2px solid #4b83d3;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff 0%, #fff 74%, #eef5ff 100%);
+}
+
+.mvpTransactionActionBox h2,
+.mvpTransactionSectionTitle,
+.mvpTransactionSideCard h2 {
+  margin: 0 0 12px;
+  color: #225cb4;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mvpTransactionActionBox p,
+.mvpTransactionHistoryItem p,
+.mvpTransactionFaq p,
+.mvpTransactionDetailsText,
+.mvpTransactionFeeList span {
+  margin: 0;
+  color: #33425b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.mvpTransactionActionButtons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.mvpTransactionPrimaryAction,
+.mvpTransactionSecondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mvpTransactionPrimaryAction {
+  border: 0;
+  background: #2e67bd;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(46, 103, 189, 0.24);
+}
+
+.mvpTransactionSecondaryAction {
+  color: #2e67bd;
+}
+
+.mvpTransactionDetailsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 20px;
+}
+
+.mvpTransactionDetailsGrid > * {
+  min-width: 0;
+}
+
+.mvpTransactionDetailsText {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mvpTransactionDetailsText strong {
+  color: #233452;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mvpTransactionTotals {
+  display: grid;
+  gap: 14px;
+}
+
+.mvpTransactionTotals div,
+.mvpTransactionFeeList div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mvpTransactionTotals span,
+.mvpTransactionFeeList strong,
+.mvpTransactionHistoryItem strong,
+.mvpTransactionFaq summary {
+  color: #44516c;
+  font-size: 16px;
+}
+
+.mvpTransactionTotals strong,
+.mvpTransactionFeeList strong {
+  color: #313650;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mvpTransactionTotals .is-total {
+  padding-top: 14px;
+  border-top: 1px solid #dde4ee;
+}
+
+.mvpTransactionTotals .is-total strong {
+  font-weight: 700;
+}
+
+.mvpTransactionHistory {
+  display: grid;
+  gap: 18px;
+}
+
+.mvpTransactionHistoryItem {
+  display: grid;
+  gap: 6px;
+}
+
+.mvpTransactionFaq {
+  display: grid;
+  gap: 8px;
+}
+
+.mvpTransactionFaq details {
+  padding: 14px 0;
+  border-bottom: 1px solid #ccd8e4;
+}
+
+.mvpTransactionFaq summary {
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+}
+
+.mvpTransactionFaq summary::-webkit-details-marker {
+  display: none;
+}
+
+.mvpTransactionFaq a {
+  margin-top: 10px;
+  color: #2e67bd;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.mvpTransactionCancel {
+  justify-self: center;
+  border: 0;
+  background: transparent;
+  color: #f1485f;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+}
+
+.mvpTransactionModifyDialog {
+  width: min(92vw, 760px);
+  margin-top: 90px;
+  padding: 28px 28px 24px;
+}
+
+.mvpTransactionModifyTitle {
+  margin: 0 0 12px;
+  color: #225cb4;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.mvpTransactionModifyLead {
+  margin: 0 0 20px;
+  color: #4f5f76;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.mvpTransactionModifyForm {
+  display: grid;
+  gap: 16px;
+}
+
+.mvpTransactionModifyForm textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.mvpTransactionModifyForm small[data-modify-error-for] {
+  display: none;
+  margin-top: 6px;
+  color: #d84a4a;
+  font-size: 13px;
+}
+
+.mvpTransactionModifyForm small[data-modify-error-for]:not(:empty) {
+  display: block;
+}
+
+.mvpTransactionModifyActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+@media (max-width: 1100px) {
+  .mvpHeader-inner,
+  .mvpHeader-nav,
+  .mvpHeader-actions,
+  .mvpSectionCta,
+  .mvpSectionCta-actions {
+    flex-wrap: wrap;
+  }
+
+  .mvpHeader-inner {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    justify-content: center;
+  }
+
+  .mvpFooter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mvpAccountActions {
+    flex-wrap: wrap;
+  }
+
+  .mvpAccountSummaryGrid,
+  .mvpAccountFooterGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mvpAccountToolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .mvpAccountCount {
+    justify-self: start;
+  }
+
+  .mvpTransactionLayout,
+  .mvpTransactionDetailsGrid,
+  .mvpTransactionPartyGrid,
+  .mvpStartGrid--three,
+  .mvpStartGrid--two,
+  .mvpReviewGrid--three,
+  .mvpReviewGrid--two,
+  .mvpReviewAssetCard {
+    grid-template-columns: 1fr;
+  }
+
+  .mvpTransactionModifyDialog {
+    width: min(94vw, 680px);
+    margin-top: 72px;
+    padding: 24px 20px 20px;
+  }
+
+  .mvpPayTop,
+  .mvpPayProgress {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1366px) {
+  .mvpPayCard {
+    width: min(100%, 760px);
+  }
+
+  .mvpPayTop {
+    grid-template-columns: minmax(0, 1fr) 248px;
+    gap: 16px;
+    padding: 18px 18px 16px;
+  }
+
+  .mvpPayProgress {
+    padding: 16px 18px;
+  }
+
+  .mvpPayForm {
+    padding: 16px 18px 20px;
+  }
+
+  .mvpPayForm h1 {
+    font-size: 17px;
+  }
+
+  .mvpWalletDialog {
+    width: min(94vw, 620px);
+    padding: 22px 20px 18px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .mvpHeader-inner {
+    min-height: 68px;
+    gap: 18px;
+  }
+
+  .mvpHeader-brand {
+    font-size: 24px;
+  }
+
+  .mvpAccountShell {
+    max-width: 1180px;
+  }
+
+  .mvpAccountTitle {
+    font-size: 38px;
+  }
+
+  .mvpAccountTabs {
+    gap: 24px;
+  }
+
+  .mvpAccountTab {
+    font-size: 16px;
+  }
+
+  .mvpAccountHeader-inner {
+    gap: 18px;
+  }
+
+  .mvpHeader-nav,
+  .mvpHeader-actions,
+  .mvpAccountActions {
+    gap: 14px;
+  }
+
+  .mvpHeader-nav a,
+  .mvpHeader-link,
+  .mvpHeader-logout {
+    font-size: 15px;
+  }
+
+  .mvpAccountCta {
+    min-width: 190px;
+    min-height: 42px;
+    font-size: 14px;
+  }
+
+  .mvpStartCard {
+    width: min(100%, 900px);
+  }
+}
+
+@media (max-width: 1366px) {
+  .mvpHeader-inner {
+    min-height: 64px;
+    gap: 16px;
+  }
+
+  .mvpHeader-brand {
+    font-size: 22px;
+  }
+
+  .mvpHeader-nav,
+  .mvpHeader-actions,
+  .mvpAccountActions {
+    gap: 12px;
+  }
+
+  .mvpHeader-nav a,
+  .mvpHeader-link,
+  .mvpHeader-logout,
+  .mvpHeader-user {
+    font-size: 14px;
+  }
+
+  .mvpAccountAvatar {
+    width: 38px;
+    height: 38px;
+    font-size: 17px;
+  }
+
+  .mvpAccountAvatar--header {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  .mvpAuthMain {
+    padding: 18px 0 40px;
+  }
+
+  .mvpAuthCard {
+    width: min(100%, 760px);
+    padding: 38px 32px 40px;
+    box-shadow: 0 8px 20px rgba(17, 49, 75, 0.07);
+  }
+
+  .mvpAuthCard-title {
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
+
+  .mvpAuthStandaloneForm {
+    width: min(100%, 560px);
+  }
+
+  .mvpAuthStandaloneField {
+    margin-bottom: 22px;
+  }
+
+  .mvpAuthStandaloneField > span {
+    margin-bottom: 10px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  .mvpAuthStandaloneInput {
+    min-height: 56px;
+  }
+
+  .mvpAuthStandaloneIcon {
+    width: 46px;
+    font-size: 20px;
+  }
+
+  .mvpAuthStandaloneInput input {
+    height: 54px;
+    font-size: 16px;
+  }
+
+  .mvpAuthCaptcha {
+    min-height: 72px;
+    margin-bottom: 22px;
+    font-size: 16px;
+  }
+
+  .mvpAuthPrimaryButton,
+  .mvpAuthSecondaryButton {
+    min-height: 52px;
+    font-size: 16px;
+  }
+
+  .mvpAuthRecover,
+  .mvpAuthDivider {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 820px) {
+  .mvpHeroWrap {
+    padding-top: 24px;
+  }
+
+  .sectionHero-carousel {
+    max-width: none;
+  }
+
+  .mvpSectionCta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mvpModal-dialog {
+    margin-top: 40px;
+    padding: 26px 20px 22px;
+  }
+
+  .mvpModal-title {
+    font-size: 28px;
+  }
+
+  .mvpAuthMain {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .mvpAuthCard {
+    width: 100%;
+    padding: 28px 16px 32px;
+  }
+
+  .mvpAuthCard-title {
+    margin-bottom: 22px;
+    font-size: 26px;
+  }
+
+  .mvpAuthStandaloneField > span {
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+
+  .mvpAuthStandaloneField {
+    margin-bottom: 20px;
+  }
+
+  .mvpAuthStandaloneInput {
+    min-height: 56px;
+  }
+
+  .mvpAuthStandaloneIcon {
+    width: 46px;
+    font-size: 20px;
+  }
+
+  .mvpAuthStandaloneInput input {
+    height: 54px;
+    font-size: 16px;
+  }
+
+  .mvpAuthCaptcha {
+    min-height: 72px;
+    margin-bottom: 20px;
+    padding: 0 16px;
+    font-size: 16px;
+  }
+
+  .mvpAuthPrimaryButton,
+  .mvpAuthSecondaryButton {
+    min-height: 54px;
+    font-size: 16px;
+  }
+
+  .mvpAuthRecover,
+  .mvpAuthDivider {
+    font-size: 16px;
+  }
+
+  .mvpAuthInlineMessage {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+
+  .mvpAccountTitle {
+    font-size: 40px;
+  }
+
+  .mvpAccountTabs {
+    gap: 18px;
+    overflow-x: auto;
+  }
+
+  .mvpAccountTableWrap {
+    overflow-x: auto;
+  }
+
+  .mvpAccountTable {
+    min-width: 980px;
+  }
+
+  .mvpTransactionCard,
+  .mvpTransactionSideCard,
+  .mvpTransactionActionBox {
+    padding: 20px;
+  }
+
+  .mvpTransactionTitle {
+    font-size: 24px;
+  }
+
+  .mvpTransactionTimeline {
+    grid-template-columns: repeat(5, minmax(112px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .mvpStartCard {
+    width: min(100%, 760px);
+    padding: 22px 18px 24px;
+  }
+
+  .mvpReviewCard {
+    width: min(100%, 760px);
+    padding: 22px 18px 24px;
+  }
+
+  .mvpCreatedHeaderInner {
+    min-height: 72px;
+  }
+
+  .mvpCreatedBrand {
+    font-size: 20px;
+  }
+
+  .mvpCreatedHelp {
+    font-size: 16px;
+  }
+
+  .mvpCreatedCard {
+    width: min(100%, 720px);
+    padding: 28px 20px 24px;
+  }
+
+  .mvpCreatedTitle {
+    font-size: 24px;
+  }
+
+  .mvpCreatedLead {
+    width: min(100%, 560px);
+    font-size: 14px;
+  }
+
+  .mvpCreatedButton {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .mvpLegalCard {
+    width: min(100%, 760px);
+    padding: 24px 18px 28px;
+  }
+
+  .mvpHelpCard {
+    width: min(100%, 860px);
+    padding: 28px 20px 24px;
+  }
+
+  .mvpHelpGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .mvpHelpIntro h1,
+  .mvpHelpSection h2,
+  .mvpHelpContact h2 {
+    font-size: 24px;
+  }
+
+  .mvpStartAddon {
+    grid-template-columns: 22px minmax(0, 1fr);
+  }
+
+  .mvpStartAddon em {
+    justify-self: start;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .mvpHeader-inner {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .mvpHeader-nav,
+  .mvpHeader-actions {
+    width: 100%;
+  }
+
+  .mvpHeader-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    gap: 16px;
+  }
+
+  .mvpHeader-nav a,
+  .mvpHeader-link,
+  .mvpHeader-logout {
+    font-size: 15px;
+  }
+
+  .mvpHeader-actions {
+    justify-content: space-between;
+  }
+
+  .mvpHelpCard {
+    padding: 22px 16px 20px;
+  }
+
+  .mvpHelpIntro h1,
+  .mvpHelpSection h2,
+  .mvpHelpContact h2 {
+    font-size: 22px;
+  }
+
+  .mvpHelpSection {
+    padding: 18px;
+  }
+
+  .mvpHelpFaqItem strong {
+    font-size: 17px;
+  }
+
+  .mvpSupportChat-dialog {
+    width: min(100% - 20px, 440px);
+    margin: 56px 10px 10px auto;
+  }
+
+  .mvpAuthCard {
+    border-radius: 6px;
+    box-shadow: 0 8px 18px rgba(17, 49, 75, 0.06);
+  }
+
+  .mvpStartActions {
+    justify-content: stretch;
+  }
+
+  .mvpStartSubmit {
+    width: 100%;
+    min-height: 52px;
+    font-size: 16px;
+  }
+
+  .mvpReviewSectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .mvpCreatedHeaderInner {
+    min-height: 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .mvpCreatedCard {
+    padding: 22px 16px 20px;
+  }
+
+  .mvpCreatedShareGrid,
+  .mvpCreatedUrlRow {
+    grid-template-columns: 1fr;
+  }
+
+  .mvpCreatedTitle {
+    font-size: 22px;
+  }
+
+  .mvpCreatedLead {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .mvpCreatedQr {
+    width: 132px;
+    height: 132px;
+  }
+
+  .mvpCreatedShare {
+    width: 100%;
+  }
+
+  .mvpCreatedCopy {
+    width: 100%;
+  }
+
+  .mvpPayMain {
+    padding: 18px 0 26px;
+  }
+
+  .mvpPayTop,
+  .mvpPayProgress,
+  .mvpPayForm {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .mvpPayOption {
+    grid-template-columns: 40px minmax(0, 1fr) auto 22px;
+    padding: 14px 0;
+  }
+
+  .mvpPayOptionIcon {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .mvpWalletAddressRow,
+  .mvpWalletSeedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mvpTransactionModifyActions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .mvpTransactionModifyActions .mvpTransactionPrimaryAction,
+  .mvpTransactionModifyActions .mvpTransactionSecondaryAction {
+    width: 100%;
+  }
+
+  .mvpReviewActions {
+    justify-content: stretch;
+  }
+
+  .mvpReviewSubmit {
+    width: 100%;
+    min-height: 52px;
+    font-size: 16px;
+  }
+
+  .mvpLegalHeader h1 {
+    font-size: 24px;
+  }
+
+  .mvpLegalContent h2 {
+    font-size: 18px;
+  }
+
+  .mvpLegalContent p {
+    font-size: 15px;
+  }
+
+  .mvpTransactionHeader {
+    flex-direction: column;
+  }
+
+  .mvpTransactionActionButtons {
+    align-items: stretch;
+  }
+
+  .mvpTransactionPrimaryAction,
+  .mvpTransactionSecondaryAction {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
