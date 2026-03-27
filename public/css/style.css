@@ -3006,6 +3006,10 @@ body.is-modal-open {
     overflow-x: auto;
   }
 
+  .mvpAccountTab {
+    white-space: nowrap;
+  }
+
   .mvpAccountTableWrap {
     overflow-x: auto;
   }
@@ -3103,6 +3107,25 @@ body.is-modal-open {
 }
 
 @media (max-width: 560px) {
+  .mvpAccountTabs {
+    gap: 12px;
+  }
+
+  .mvpAccountTab {
+    padding-bottom: 10px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .mvpAccountPageHeader {
+    gap: 12px;
+  }
+
+  .mvpAccountTitle {
+    font-size: 28px;
+    line-height: 1.08;
+  }
+
   .mvpHeader-inner {
     align-items: flex-start;
     gap: 12px;

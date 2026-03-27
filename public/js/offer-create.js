@@ -12,6 +12,8 @@ const toast = document.querySelector("[data-toast]");
 const draftKey = "escrow_offer_draft";
 const assetTypeField = form?.elements.asset_type;
 const dynamicFieldsRoot = document.querySelector("[data-dynamic-fields]");
+const headerToggle = document.querySelector("[data-header-toggle]");
+const headerPanel = document.querySelector("[data-header-panel]");
 
 const dynamicFieldGroups = {
   vehicle: {
@@ -173,6 +175,29 @@ function showToast(text, isError = false) {
   }, 3200);
 }
 
+function closeHeaderMenu() {
+  if (!headerToggle || !headerPanel) return;
+  headerToggle.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("is-header-open");
+}
+
+function openHeaderMenu() {
+  if (!headerToggle || !headerPanel) return;
+  headerToggle.setAttribute("aria-expanded", "true");
+  document.body.classList.add("is-header-open");
+}
+
+function toggleHeaderMenu() {
+  if (!headerToggle) return;
+  const isExpanded = headerToggle.getAttribute("aria-expanded") === "true";
+  if (isExpanded) {
+    closeHeaderMenu();
+    return;
+  }
+
+  openHeaderMenu();
+}
+
 function setMessage(text, isError = false) {
   if (!message) return;
   if (!text) {
@@ -252,6 +277,33 @@ function preloadDraft() {
   } catch {
     // ignore invalid draft payload
   }
+}
+
+function bindHeaderMenu() {
+  headerToggle?.addEventListener("click", toggleHeaderMenu);
+  headerPanel?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeHeaderMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeHeaderMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!headerToggle || !headerPanel) return;
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    if (headerToggle.contains(target) || headerPanel.contains(target)) return;
+    closeHeaderMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 640) {
+      closeHeaderMenu();
+    }
+  });
 }
 
 function renderDynamicFields() {
@@ -350,6 +402,7 @@ form?.addEventListener("submit", submitForm);
 assetTypeField?.addEventListener("change", renderDynamicFields);
 preloadDraft();
 renderDynamicFields();
+bindHeaderMenu();
 ensureAuth().catch(() => {
   localStorage.removeItem(storageKey);
   window.location.href = document.body.dataset.loginUrl || "/login";
