@@ -15,12 +15,13 @@
       <div class="mvpAuthCard">
         <h1 class="mvpAuthCard-title">Создайте аккаунт Escrow.com</h1>
 
-        <form class="mvpAuthStandaloneForm" data-signup-form novalidate>
+        <form class="mvpAuthStandaloneForm" method="POST" action="{{ route('register') }}" novalidate>
+          @csrf
           <label class="mvpAuthStandaloneField">
             <span>Введите ваше имя<span class="mvpAuthRequired">*</span></span>
             <div class="mvpAuthStandaloneInput">
               <span class="mvpAuthStandaloneIcon">◯</span>
-              <input type="text" name="name" autocomplete="name" required>
+              <input type="text" name="name" autocomplete="name" value="{{ old('name') }}" required>
             </div>
           </label>
 
@@ -28,7 +29,7 @@
             <span>Введите ваш email<span class="mvpAuthRequired">*</span></span>
             <div class="mvpAuthStandaloneInput">
               <span class="mvpAuthStandaloneIcon">✉</span>
-              <input type="email" name="email" autocomplete="email" required>
+              <input type="email" name="email" autocomplete="email" value="{{ old('email') }}" required>
             </div>
           </label>
 
@@ -48,21 +49,19 @@
             </div>
           </label>
 
-          <button type="button" class="mvpAuthPrimaryButton" data-signup-submit>Зарегистрировать аккаунт</button>
+          <button type="submit" class="mvpAuthPrimaryButton">Зарегистрировать аккаунт</button>
 
           <div class="mvpAuthDivider">- ИЛИ -</div>
 
           <a href="{{ route('login.page') }}" class="mvpAuthSecondaryButton">Войти в аккаунт</a>
         </form>
 
-        <p class="mvpAuthInlineMessage" data-signup-message hidden></p>
+        @if ($errors->any())
+          <p class="mvpAuthInlineMessage is-error">{{ $errors->first() }}</p>
+        @endif
       </div>
     </section>
   </main>
 
   <div class="mvpToast" data-toast hidden></div>
 @endsection
-
-@push('scripts')
-  <script src="{{ asset('js/signup.js') }}"></script>
-@endpush

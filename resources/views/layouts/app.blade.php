@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="{{ $themeColor ?? '#01426a' }}">
     <meta name="description" content="{{ $description ?? 'Escrow.com frontend' }}">
     <title>{{ $title ?? 'Escrow.com' }}</title>
@@ -16,11 +17,15 @@
     data-locale="{{ $locale ?? 'ru' }}"
     data-theme="{{ $theme ?? 'light' }}"
     data-api-base="{{ url('/api') }}"
+    data-csrf-token="{{ csrf_token() }}"
     data-home-url="{{ route('home') }}"
     data-login-url="{{ route('login.page') }}"
     data-signup-url="{{ route('signup.page') }}"
     data-dashboard-url="{{ route('dashboard.page') }}"
     data-create-offer-url="{{ route('offers.create') }}"
+    data-authenticated="{{ auth()->check() ? '1' : '0' }}"
+    data-auth-user-id="{{ auth()->id() }}"
+    data-auth-user-admin="{{ auth()->user()?->is_admin ? '1' : '0' }}"
     data-support-email="support@escrow.local"
     data-support-phone="+1-415-801-2270"
   >

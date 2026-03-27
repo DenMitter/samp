@@ -1,6 +1,6 @@
 const apiBase = document.body.dataset.apiBase || "/api";
-const storageKey = "escrow_mvp_auth";
 const homePath = document.body.dataset.homeUrl || "/";
+const csrfToken = document.body.dataset.csrfToken || "";
 
 const pageRoot = document.querySelector("[data-offer-create-page]");
 const offerShowBase = pageRoot?.dataset.offerShowBase || "/offers/";
@@ -201,24 +201,21 @@ function setFieldError(name, text) {
 }
 
 async function ensureAuth() {
-  const token = localStorage.getItem(storageKey) || "";
-
   const response = await fetch(`${apiBase}/me`, {
     headers: {
       Accept: "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
+    credentials: "same-origin",
   });
 
   if (!response.ok) {
     if (response.status === 401) {
-      localStorage.removeItem(storageKey);
       window.location.href = document.body.dataset.loginUrl || "/login";
     }
     return null;
   }
 
-  return token;
+  return true;
 }
 
 function normalizeError(text) {
@@ -274,8 +271,8 @@ async function submitForm(event) {
   clearFieldErrors();
   setMessage("");
 
-  const token = await ensureAuth();
-  if (!token) return;
+  const isAuthed = await ensureAuth();
+  if (!isAuthed) return;
 
   submitButton.disabled = true;
 
@@ -314,14 +311,13 @@ async function submitForm(event) {
       "Content-Type": "application/json",
     };
 
-    if (token) {
-      headers.Authorization = `Bearer ${token}`;
-    }
+    headers["X-CSRF-TOKEN"] = csrfToken;
 
     const response = await fetch(`${apiBase}/offers`, {
       method: "POST",
       headers,
       body: JSON.stringify(body),
+      credentials: "same-origin",
     });
 
     const payload = await response.json().catch(() => ({}));

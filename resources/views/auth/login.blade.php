@@ -15,12 +15,13 @@
       <div class="mvpAuthCard">
         <h1 class="mvpAuthCard-title">Вход в Escrow.com</h1>
 
-        <form class="mvpAuthStandaloneForm" data-login-form novalidate>
+        <form class="mvpAuthStandaloneForm" method="POST" action="{{ route('login') }}" novalidate>
+          @csrf
           <label class="mvpAuthStandaloneField">
             <span>Введите ваш email<span class="mvpAuthRequired">*</span></span>
             <div class="mvpAuthStandaloneInput">
               <span class="mvpAuthStandaloneIcon">✉</span>
-              <input type="email" name="email" autocomplete="email" required>
+              <input type="email" name="email" autocomplete="email" value="{{ old('email') }}" required>
             </div>
           </label>
 
@@ -32,7 +33,7 @@
             </div>
           </label>
 
-          <button type="button" class="mvpAuthPrimaryButton" data-login-submit>Войти безопасно</button>
+          <button type="submit" class="mvpAuthPrimaryButton">Войти безопасно</button>
 
           <a href="#" class="mvpAuthRecover">Восстановить пароль</a>
 
@@ -41,14 +42,12 @@
           <a href="{{ route('signup.page') }}" class="mvpAuthSecondaryButton">Зарегистрировать аккаунт</a>
         </form>
 
-        <p class="mvpAuthInlineMessage" data-login-message hidden></p>
+        @if ($errors->any())
+          <p class="mvpAuthInlineMessage is-error">{{ $errors->first() }}</p>
+        @endif
       </div>
     </section>
   </main>
 
   <div class="mvpToast" data-toast hidden></div>
 @endsection
-
-@push('scripts')
-  <script src="{{ asset('js/login.js') }}"></script>
-@endpush

@@ -30,8 +30,13 @@
 
       @if ($isDark)
         <div class="mvpHeader-actions mvpHeader-actions--user">
-          <a href="{{ route('admin.transactions.page') }}" class="mvpHeader-link" data-admin-link hidden>Админка</a>
-          <button type="button" class="mvpHeader-logout" data-logout>Выйти</button>
+          @if (auth()->user()?->is_admin)
+            <a href="{{ route('admin.transactions.page') }}" class="mvpHeader-link" data-admin-link>Админка</a>
+          @endif
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="mvpHeader-logout">Выйти</button>
+          </form>
         </div>
 
         @if ($showAccountActions)
@@ -43,19 +48,28 @@
           </div>
         @endif
       @else
-        <div class="mvpHeader-actions" data-auth-guest>
-          <a href="{{ route('login.page') }}" class="mvpHeader-link">Вход</a>
-          <a href="{{ route('signup.page') }}" class="mvpHeader-link mvpHeader-link--strong">Регистрация →</a>
-        </div>
+        @guest
+          <div class="mvpHeader-actions">
+            <a href="{{ route('login.page') }}" class="mvpHeader-link">Вход</a>
+            <a href="{{ route('signup.page') }}" class="mvpHeader-link mvpHeader-link--strong">Регистрация →</a>
+          </div>
+        @endguest
 
-        <div class="mvpHeader-actions mvpHeader-actions--user" data-auth-user hidden>
-          <a href="{{ route('admin.transactions.page') }}" class="mvpHeader-link" data-admin-link hidden>Админка</a>
-          <span class="mvpHeader-user" data-user-name></span>
-          <a href="{{ route('dashboard.page') }}" class="mvpAccountAvatar mvpAccountAvatar--header" aria-label="Личный кабинет">
-            <span data-user-initial>U</span>
-          </a>
-          <button type="button" class="mvpHeader-logout" data-logout>Выйти</button>
-        </div>
+        @auth
+          <div class="mvpHeader-actions mvpHeader-actions--user">
+            @if (auth()->user()?->is_admin)
+              <a href="{{ route('admin.transactions.page') }}" class="mvpHeader-link" data-admin-link>Админка</a>
+            @endif
+            <span class="mvpHeader-user">{{ auth()->user()->name }}</span>
+            <a href="{{ route('dashboard.page') }}" class="mvpAccountAvatar mvpAccountAvatar--header" aria-label="Личный кабинет">
+              <span>{{ mb_substr(auth()->user()->name, 0, 1) }}</span>
+            </a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="mvpHeader-logout">Выйти</button>
+            </form>
+          </div>
+        @endauth
       @endif
     </div>
   </div>

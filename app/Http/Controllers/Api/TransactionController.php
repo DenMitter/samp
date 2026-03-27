@@ -292,12 +292,7 @@ class TransactionController extends Controller
 
     private function isAdminRequest(Request $request): bool
     {
-        $allowedEmails = collect(explode(',', (string) env('ADMIN_EMAILS', 'admin@admin.com')))
-            ->map(fn (string $item) => mb_strtolower(trim($item)))
-            ->filter()
-            ->values();
-
-        return $allowedEmails->contains(mb_strtolower(trim((string) $request->user()->email)));
+        return $request->user()?->hasAdminAccess() ?? false;
     }
 
     private function presentTransaction(Transaction $transaction, Request $request): Transaction

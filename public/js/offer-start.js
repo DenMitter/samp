@@ -1,9 +1,8 @@
 const apiBase = document.body.dataset.apiBase || "/api";
-const storageKey = "escrow_mvp_auth";
 const homePath = document.body.dataset.homeUrl || "/";
+const csrfToken = document.body.dataset.csrfToken || "";
 
 const state = {
-  token: localStorage.getItem(storageKey) || "",
   user: null,
   offer: null,
   fee: 0,
@@ -75,19 +74,21 @@ function setFieldError(name, text) {
 }
 
 async function apiRequest(path, options = {}) {
+  const method = options.method || "GET";
   const headers = {
     Accept: "application/json",
     ...(options.body ? { "Content-Type": "application/json" } : {}),
   };
 
-  if (state.token) {
-    headers.Authorization = `Bearer ${state.token}`;
+  if (method !== "GET" && method !== "HEAD" && csrfToken) {
+    headers["X-CSRF-TOKEN"] = csrfToken;
   }
 
   const response = await fetch(`${apiBase}${path}`, {
-    method: options.method || "GET",
+    method,
     headers,
     body: options.body ? JSON.stringify(options.body) : undefined,
+    credentials: "same-origin",
   });
 
   const payload = await response.json().catch(() => ({}));
@@ -292,7 +293,6 @@ async function bootstrap() {
   } catch (error) {
     showToast(error.message, true);
     if (error.status === 401) {
-      localStorage.removeItem(storageKey);
       window.setTimeout(() => {
         window.location.href = dashboardPath;
       }, 1200);

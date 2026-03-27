@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,16 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Auth::viaRequest('api-token', function (Request $request): ?User {
-            $token = $request->bearerToken() ?: $request->cookie('escrow_mvp_auth');
-
-            if (! $token) {
-                return null;
-            }
-
-            return User::query()
-                ->where('api_token', hash('sha256', $token))
-                ->first();
-        });
+        //
     }
 }

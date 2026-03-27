@@ -1,9 +1,7 @@
-const storageKey = "escrow_mvp_auth";
 const apiBase = document.body.dataset.apiBase || "/api";
 const homePath = document.body.dataset.homeUrl || "/";
 
 const state = {
-  token: localStorage.getItem(storageKey) || "",
   transaction: null,
   toastTimer: null,
 };
@@ -34,12 +32,9 @@ async function apiRequest(path) {
     Accept: "application/json",
   };
 
-  if (state.token) {
-    headers.Authorization = `Bearer ${state.token}`;
-  }
-
   const response = await fetch(`${apiBase}${path}`, {
     headers,
+    credentials: "same-origin",
   });
 
   const payload = await response.json().catch(() => ({}));
@@ -98,7 +93,6 @@ async function bootstrap() {
   } catch (error) {
     showToast(error.message, true);
     if (error.status === 401) {
-      localStorage.removeItem(storageKey);
       window.setTimeout(() => {
         window.location.href = dashboardPath;
       }, 1200);

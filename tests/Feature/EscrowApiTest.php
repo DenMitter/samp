@@ -23,17 +23,7 @@ class EscrowApiTest extends TestCase
             'password' => 'password123',
         ]);
 
-        $buyerLogin = $this->postJson('/api/login', [
-            'email' => $buyer->email,
-            'password' => 'password123',
-        ])->assertOk()->json();
-
-        $sellerLogin = $this->postJson('/api/login', [
-            'email' => $seller->email,
-            'password' => 'password123',
-        ])->assertOk()->json();
-
-        $offer = $this->withToken($buyerLogin['token'])
+        $offer = $this->actingAs($buyer)
             ->postJson('/api/offers', [
                 'title' => 'Example domain sale',
                 'description' => 'Escrow transaction',
@@ -49,14 +39,18 @@ class EscrowApiTest extends TestCase
             ->assertCreated()
             ->json();
 
-        $accept = $this->withToken($sellerLogin['token'])
+        Auth()->logout();
+
+        $accept = $this->actingAs($seller)
             ->postJson("/api/offers/{$offer['id']}/accept")
             ->assertOk()
             ->json();
 
         $transactionId = $accept['transaction']['id'];
 
-        $this->withToken($buyerLogin['token'])
+        Auth()->logout();
+
+        $this->actingAs($buyer)
             ->postJson("/api/transactions/{$transactionId}/payments", [
                 'amount' => 800,
                 'provider' => 'manual',
@@ -65,7 +59,7 @@ class EscrowApiTest extends TestCase
             ->assertCreated()
             ->assertJsonPath('transaction.payment_status', 'pending_confirmation');
 
-        $this->withToken($buyerLogin['token'])
+        $this->actingAs($buyer)
             ->getJson('/api/dashboard')
             ->assertOk()
             ->assertJsonPath('stats.offers_total', 1)
@@ -80,21 +74,18 @@ class EscrowApiTest extends TestCase
             'password' => 'password123',
         ]);
 
-        $login = $this->postJson('/api/login', [
+        $login = $this->post('/login', [
             'email' => $user->email,
             'password' => 'password123',
         ]);
 
-        $login->assertOk()
-            ->assertCookie('escrow_mvp_auth');
+        $login->assertRedirect('/dashboard');
 
-        $token = $login->json('token');
-
-        $this->withCookie('escrow_mvp_auth', $token)
+        $this->actingAs($user)
             ->get('/login')
             ->assertRedirect('/dashboard');
 
-        $this->withCookie('escrow_mvp_auth', $token)
+        $this->actingAs($user)
             ->get('/dashboard')
             ->assertOk();
     }
@@ -111,11 +102,6 @@ class EscrowApiTest extends TestCase
             'password' => 'password123',
         ]);
 
-        $login = $this->postJson('/api/login', [
-            'email' => $buyer->email,
-            'password' => 'password123',
-        ])->assertOk();
-
         $transaction = Transaction::query()->create([
             'uuid' => '11111111-2222-3333-4444-555555555555',
             'buyer_id' => $buyer->id,
@@ -129,7 +115,7 @@ class EscrowApiTest extends TestCase
             'meta' => [],
         ]);
 
-        $this->withToken($login->json('token'))
+        $this->actingAs($buyer)
             ->getJson("/api/transactions/{$transaction->uuid}")
             ->assertOk()
             ->assertJsonPath('id', $transaction->id)
