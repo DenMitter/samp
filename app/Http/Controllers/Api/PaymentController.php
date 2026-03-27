@@ -181,7 +181,7 @@ class PaymentController extends Controller
         $hex = substr($result, 2);
         $hex = $hex === '' ? '0' : $hex;
 
-        return gmp_strval(gmp_init($hex, 16), 10);
+        return $this->hexToDecimalString($hex);
     }
 
     private function decimalToTokenUnits(string $amount, int $decimals): string
@@ -192,5 +192,27 @@ class PaymentController extends Controller
     private function tokenUnitsToDecimal(string $units, int $decimals): string
     {
         return bcdiv($units, bcpow('10', (string) $decimals, 0), $decimals);
+    }
+
+    private function hexToDecimalString(string $hex): string
+    {
+        $normalized = strtolower(ltrim($hex, '0'));
+
+        if ($normalized === '') {
+            return '0';
+        }
+
+        if (function_exists('gmp_init') && function_exists('gmp_strval')) {
+            return gmp_strval(gmp_init($normalized, 16), 10);
+        }
+
+        $decimal = '0';
+
+        foreach (str_split($normalized) as $character) {
+            $value = (string) hexdec($character);
+            $decimal = bcadd(bcmul($decimal, '16', 0), $value, 0);
+        }
+
+        return $decimal;
     }
 }
