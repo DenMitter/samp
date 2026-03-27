@@ -32,20 +32,28 @@ function showToast(message, isError = false) {
 }
 
 async function apiRequest(path, options = {}) {
+  const headers = {
+    Accept: "application/json",
+    ...(options.body ? { "Content-Type": "application/json" } : {}),
+  };
+
+  if (state.token) {
+    headers.Authorization = `Bearer ${state.token}`;
+  }
+
   const response = await fetch(`${apiBase}${path}`, {
     method: options.method || "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${state.token}`,
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
-    },
+    headers,
     body: options.body ? JSON.stringify(options.body) : undefined,
   });
 
   const payload = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(payload.message || "Не удалось загрузить данные админки.");
+    throw Object.assign(new Error(payload.message || "Не удалось загрузить данные админки."), {
+      status: response.status,
+      payload,
+    });
   }
 
   return payload;
@@ -208,11 +216,6 @@ function bindUi() {
 }
 
 async function bootstrapAdmin() {
-  if (!state.token) {
-    window.location.href = homePath;
-    return;
-  }
-
   try {
     const me = await apiRequest("/me");
     state.user = me.user;
@@ -233,11 +236,13 @@ async function bootstrapAdmin() {
     state.records = payload.transactions || [];
     renderTable();
   } catch (error) {
-    localStorage.removeItem(storageKey);
     showToast(error.message, true);
-    window.setTimeout(() => {
-      window.location.href = homePath;
-    }, 1200);
+    if (error.status === 401) {
+      localStorage.removeItem(storageKey);
+      window.setTimeout(() => {
+        window.location.href = homePath;
+      }, 1200);
+    }
   }
 }
 

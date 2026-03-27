@@ -201,22 +201,20 @@ function setFieldError(name, text) {
 }
 
 async function ensureAuth() {
-  const token = localStorage.getItem(storageKey);
-  if (!token) {
-    window.location.href = document.body.dataset.signupUrl || "/signup";
-    return null;
-  }
+  const token = localStorage.getItem(storageKey) || "";
 
   const response = await fetch(`${apiBase}/me`, {
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
   });
 
   if (!response.ok) {
-    localStorage.removeItem(storageKey);
-    window.location.href = document.body.dataset.loginUrl || "/login";
+    if (response.status === 401) {
+      localStorage.removeItem(storageKey);
+      window.location.href = document.body.dataset.loginUrl || "/login";
+    }
     return null;
   }
 
@@ -311,13 +309,18 @@ async function submitForm(event) {
   });
 
   try {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+
+    if (token) {
+      headers.Authorization = `Bearer ${token}`;
+    }
+
     const response = await fetch(`${apiBase}/offers`, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
+      headers,
       body: JSON.stringify(body),
     });
 
@@ -352,6 +355,5 @@ assetTypeField?.addEventListener("change", renderDynamicFields);
 preloadDraft();
 renderDynamicFields();
 ensureAuth().catch(() => {
-  localStorage.removeItem(storageKey);
-  window.location.href = document.body.dataset.loginUrl || "/login";
+  showToast("Не удалось проверить текущую сессию.", true);
 });

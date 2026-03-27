@@ -57,7 +57,10 @@ async function apiRequest(path, options = {}) {
     const firstError = payload.errors
       ? Object.values(payload.errors).flat()[0]
       : payload.message;
-    throw new Error(firstError || "Произошла ошибка запроса.");
+    throw Object.assign(new Error(firstError || "Произошла ошибка запроса."), {
+      status: response.status,
+      payload,
+    });
   }
 
   return payload;
@@ -87,9 +90,11 @@ async function loadCurrentUser() {
     const payload = await apiRequest("/me");
     state.user = payload.user;
   } catch (error) {
-    state.token = "";
-    state.user = null;
-    localStorage.removeItem(storageKey);
+    if (error.status === 401) {
+      state.token = "";
+      state.user = null;
+      localStorage.removeItem(storageKey);
+    }
   }
 
   updateAuthView();

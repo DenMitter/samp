@@ -39,20 +39,28 @@ function showToast(message, isError = false) {
 }
 
 async function apiRequest(path, options = {}) {
+  const headers = {
+    Accept: "application/json",
+    ...(options.body ? { "Content-Type": "application/json" } : {}),
+  };
+
+  if (state.token) {
+    headers.Authorization = `Bearer ${state.token}`;
+  }
+
   const response = await fetch(`${apiBase}${path}`, {
     method: options.method || "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${state.token}`,
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
-    },
+    headers,
     body: options.body ? JSON.stringify(options.body) : undefined,
   });
 
   const payload = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(payload.message || "Не удалось загрузить сделку.");
+    throw Object.assign(new Error(payload.message || "Не удалось загрузить сделку."), {
+      status: response.status,
+      payload,
+    });
   }
 
   return payload;
@@ -677,7 +685,7 @@ function bindUi() {
 }
 
 async function bootstrap() {
-  if (!state.token || !transactionId) {
+  if (!transactionId) {
     window.location.href = homePath;
     return;
   }
@@ -691,11 +699,13 @@ async function bootstrap() {
     state.user = me.user;
     renderTransaction(transaction);
   } catch (error) {
-    localStorage.removeItem(storageKey);
     showToast(error.message, true);
-    window.setTimeout(() => {
-      window.location.href = dashboardPath;
-    }, 1200);
+    if (error.status === 401) {
+      localStorage.removeItem(storageKey);
+      window.setTimeout(() => {
+        window.location.href = dashboardPath;
+      }, 1200);
+    }
   }
 }
 

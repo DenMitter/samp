@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class AuthController extends Controller
 {
@@ -26,7 +28,7 @@ class AuthController extends Controller
             'api_token' => hash('sha256', $plainTextToken),
         ]);
 
-        return response()->json([
+        return $this->jsonWithAuthCookie($request, [
             'message' => 'User registered successfully.',
             'user' => $this->userPayload($user),
             'token' => $plainTextToken,
@@ -54,7 +56,7 @@ class AuthController extends Controller
             'api_token' => hash('sha256', $plainTextToken),
         ])->save();
 
-        return response()->json([
+        return $this->jsonWithAuthCookie($request, [
             'message' => 'Logged in successfully.',
             'user' => $this->userPayload($user),
             'token' => $plainTextToken,
@@ -76,7 +78,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Logged out successfully.',
-        ]);
+        ])->withoutCookie($this->authCookieName(), '/', config('session.domain'));
     }
 
     private function userPayload(User $user): array
@@ -95,5 +97,30 @@ class AuthController extends Controller
             ->values();
 
         return $allowedEmails->contains(mb_strtolower(trim($email)));
+    }
+
+    private function jsonWithAuthCookie(Request $request, array $payload, int $status = 200): JsonResponse
+    {
+        return response()->json($payload, $status)->cookie($this->makeAuthCookie($request, $payload['token']));
+    }
+
+    private function makeAuthCookie(Request $request, string $token): Cookie
+    {
+        return cookie(
+            $this->authCookieName(),
+            $token,
+            60 * 24 * 30,
+            '/',
+            config('session.domain'),
+            $request->isSecure(),
+            true,
+            false,
+            'lax'
+        );
+    }
+
+    private function authCookieName(): string
+    {
+        return 'escrow_mvp_auth';
     }
 }

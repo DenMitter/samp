@@ -75,13 +75,18 @@ function setFieldError(name, text) {
 }
 
 async function apiRequest(path, options = {}) {
+  const headers = {
+    Accept: "application/json",
+    ...(options.body ? { "Content-Type": "application/json" } : {}),
+  };
+
+  if (state.token) {
+    headers.Authorization = `Bearer ${state.token}`;
+  }
+
   const response = await fetch(`${apiBase}${path}`, {
     method: options.method || "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${state.token}`,
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
-    },
+    headers,
     body: options.body ? JSON.stringify(options.body) : undefined,
   });
 
@@ -89,6 +94,7 @@ async function apiRequest(path, options = {}) {
 
   if (!response.ok) {
     throw Object.assign(new Error(payload.message || "Не удалось обработать запрос."), {
+      status: response.status,
       payload,
     });
   }
@@ -264,7 +270,7 @@ function renderOffer(offer) {
 }
 
 async function bootstrap() {
-  if (!state.token || !offerId) {
+  if (!offerId) {
     window.location.href = homePath;
     return;
   }
@@ -284,11 +290,13 @@ async function bootstrap() {
 
     renderOffer(offer);
   } catch (error) {
-    localStorage.removeItem(storageKey);
     showToast(error.message, true);
-    window.setTimeout(() => {
-      window.location.href = dashboardPath;
-    }, 1200);
+    if (error.status === 401) {
+      localStorage.removeItem(storageKey);
+      window.setTimeout(() => {
+        window.location.href = dashboardPath;
+      }, 1200);
+    }
   }
 }
 

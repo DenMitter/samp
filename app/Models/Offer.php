@@ -24,6 +24,16 @@ use Illuminate\Database\Eloquent\Model;
 ])]
 class Offer extends Model
 {
+    public function resolveRouteBinding($value, $field = null): ?Model
+    {
+        return $this->newQuery()
+            ->when($field, fn ($query) => $query->where($field, $value))
+            ->when(! $field, fn ($query) => $query
+                ->where('id', $value)
+                ->orWhere('uuid', $value))
+            ->firstOrFail();
+    }
+
     protected function casts(): array
     {
         return [

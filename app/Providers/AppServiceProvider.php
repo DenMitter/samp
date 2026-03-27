@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Auth::viaRequest('api-token', function (Request $request): ?User {
-            $token = $request->bearerToken();
+            $token = $request->bearerToken() ?: $request->cookie('escrow_mvp_auth');
 
             if (! $token) {
                 return null;
