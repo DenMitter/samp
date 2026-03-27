@@ -3172,6 +3172,22 @@ body.is-modal-open {
     font-size: 17px;
   }
 
+  .mvpAccountNotice-inner {
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .mvpAccountNotice-inner > div {
+    min-width: 0;
+  }
+
+  .mvpAccountNotice strong,
+  .mvpAccountNotice p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
   .mvpSupportChat-dialog {
     width: min(100% - 20px, 440px);
     margin: 56px 10px 10px auto;
@@ -3248,9 +3264,68 @@ body.is-modal-open {
     padding-right: 16px;
   }
 
+  .mvpPayCard {
+    width: 100%;
+  }
+
+  .mvpPayTop {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .mvpPayAsset,
+  .mvpPayTotals {
+    justify-items: stretch;
+  }
+
+  .mvpPayTotalLine {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mvpPayProgress {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .mvpPayStep {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .mvpPayStep::before {
+    display: none;
+  }
+
+  .mvpPayStep strong {
+    align-self: center;
+  }
+
   .mvpPayOption {
-    grid-template-columns: 40px minmax(0, 1fr) auto 22px;
-    padding: 14px 0;
+    grid-template-columns: 34px minmax(0, 1fr) 22px;
+    gap: 12px;
+    align-items: start;
+    padding: 16px 14px;
+  }
+
+  .mvpPayOptionBody {
+    gap: 6px;
+  }
+
+  .mvpPayOptionBody small {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .mvpPayWalletButton {
+    grid-column: 2 / 3;
+    justify-self: start;
+    margin-top: 6px;
+    min-height: 42px;
+    padding: 0 16px;
   }
 
   .mvpPayOptionIcon {
@@ -3298,6 +3373,8 @@ body.is-modal-open {
 
   .mvpTransactionHeader {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .mvpTransactionActionButtons {
@@ -3307,6 +3384,60 @@ body.is-modal-open {
   .mvpTransactionPrimaryAction,
   .mvpTransactionSecondaryAction {
     width: 100%;
+  }
+
+  .mvpTransactionLayout {
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .mvpTransactionMain,
+  .mvpTransactionSidebar,
+  .mvpTransactionCard,
+  .mvpTransactionSideCard,
+  .mvpTransactionActionBox {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 18px 14px;
+    box-sizing: border-box;
+  }
+
+  .mvpTransactionHeader > div,
+  .mvpTransactionPartyCard,
+  .mvpTransactionDetailsGrid,
+  .mvpTransactionDetailsGrid > *,
+  .mvpTransactionHistory,
+  .mvpTransactionFaq {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .mvpTransactionTitle {
+    font-size: 24px;
+    line-height: 1.08;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .mvpTransactionRef,
+  .mvpTransactionLead,
+  .mvpTransactionDetailsText,
+  .mvpTransactionPartyItem strong {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .mvpTransactionPartyCard {
+    padding: 16px 14px;
+  }
+
+  .mvpTransactionPartyGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 

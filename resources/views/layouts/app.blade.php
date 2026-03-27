@@ -46,6 +46,7 @@
         </form>
       </div>
     </div>
+    <script src="{{ asset('js/header-menu.js') }}"></script>
     @stack('scripts')
     <script src="{{ asset('js/support-chat.js') }}"></script>
   </body>
