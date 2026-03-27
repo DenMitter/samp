@@ -16,6 +16,8 @@ const state = {
 const toast = document.querySelector("[data-toast]");
 const userInitial = document.querySelector("[data-user-initial]");
 const adminLink = document.querySelector("[data-admin-link]");
+const headerToggle = document.querySelector("[data-header-toggle]");
+const headerPanel = document.querySelector("[data-header-panel]");
 const tableBody = document.querySelector("[data-transactions-table]");
 const countLabel = document.querySelector("[data-records-count]");
 const searchInput = document.querySelector("[data-search-input]");
@@ -29,6 +31,29 @@ function showToast(message, isError = false) {
   state.toastTimer = window.setTimeout(() => {
     toast.hidden = true;
   }, 3600);
+}
+
+function closeHeaderMenu() {
+  if (!headerToggle || !headerPanel) return;
+  headerToggle.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("is-header-open");
+}
+
+function openHeaderMenu() {
+  if (!headerToggle || !headerPanel) return;
+  headerToggle.setAttribute("aria-expanded", "true");
+  document.body.classList.add("is-header-open");
+}
+
+function toggleHeaderMenu() {
+  if (!headerToggle) return;
+  const isExpanded = headerToggle.getAttribute("aria-expanded") === "true";
+  if (isExpanded) {
+    closeHeaderMenu();
+    return;
+  }
+
+  openHeaderMenu();
 }
 
 async function apiRequest(path, options = {}) {
@@ -217,6 +242,11 @@ async function logout() {
 }
 
 function bindUi() {
+  headerToggle?.addEventListener("click", toggleHeaderMenu);
+  headerPanel?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeHeaderMenu);
+  });
+
   document.querySelectorAll("[data-filter-tab]").forEach((button) => {
     button.addEventListener("click", () => {
       state.activeFilter = button.dataset.filterTab || "all";
@@ -241,6 +271,26 @@ function bindUi() {
   });
 
   document.querySelector("[data-logout]")?.addEventListener("click", logout);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeHeaderMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!headerToggle || !headerPanel) return;
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    if (headerToggle.contains(target) || headerPanel.contains(target)) return;
+    closeHeaderMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 640) {
+      closeHeaderMenu();
+    }
+  });
 }
 
 async function bootstrapDashboard() {

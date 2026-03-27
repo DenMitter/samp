@@ -15,6 +15,8 @@ const userAuth = document.querySelector("[data-auth-user]");
 const userName = document.querySelector("[data-user-name]");
 const userInitials = document.querySelectorAll("[data-user-initial]");
 const adminLinks = document.querySelectorAll("[data-admin-link]");
+const headerToggle = document.querySelector("[data-header-toggle]");
+const headerPanel = document.querySelector("[data-header-panel]");
 const toast = document.querySelector("[data-toast]");
 const startButton = document.querySelector("[data-start-transaction]");
 const calculatorForm = document.querySelector(".calculator-form");
@@ -32,6 +34,29 @@ function showToast(message, isError = false) {
 
 function redirectToDashboard() {
   window.location.href = dashboardPath;
+}
+
+function closeHeaderMenu() {
+  if (!headerToggle || !headerPanel) return;
+  headerToggle.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("is-header-open");
+}
+
+function openHeaderMenu() {
+  if (!headerToggle || !headerPanel) return;
+  headerToggle.setAttribute("aria-expanded", "true");
+  document.body.classList.add("is-header-open");
+}
+
+function toggleHeaderMenu() {
+  if (!headerToggle) return;
+  const isExpanded = headerToggle.getAttribute("aria-expanded") === "true";
+  if (isExpanded) {
+    closeHeaderMenu();
+    return;
+  }
+
+  openHeaderMenu();
 }
 
 async function apiRequest(path, options = {}) {
@@ -136,6 +161,11 @@ async function logout() {
 }
 
 function bindEvents() {
+  headerToggle?.addEventListener("click", toggleHeaderMenu);
+  headerPanel?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeHeaderMenu);
+  });
+
   if (startButton) {
     startButton.addEventListener("click", createOfferFromHero);
   }
@@ -145,6 +175,26 @@ function bindEvents() {
   document.querySelector("[data-open-dashboard]")?.addEventListener("click", (event) => {
     event.preventDefault();
     redirectToDashboard();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeHeaderMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!headerToggle || !headerPanel) return;
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    if (headerToggle.contains(target) || headerPanel.contains(target)) return;
+    closeHeaderMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 640) {
+      closeHeaderMenu();
+    }
   });
 }
 
