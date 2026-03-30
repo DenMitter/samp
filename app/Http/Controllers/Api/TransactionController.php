@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Process;
@@ -58,6 +59,14 @@ class TransactionController extends Controller
             'inspection_period_days' => ['nullable', 'integer', 'min:1', 'max:30'],
             'meta' => ['nullable', 'array'],
         ]);
+
+        $seller = User::query()->findOrFail((int) $data['seller_id']);
+
+        if (! $seller->hasSellerAccount()) {
+            throw ValidationException::withMessages([
+                'seller_id' => 'Selected user is not a seller account.',
+            ]);
+        }
 
         $transaction = Transaction::create([
             ...$data,

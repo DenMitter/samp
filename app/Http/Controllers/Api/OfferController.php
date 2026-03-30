@@ -40,6 +40,10 @@ class OfferController extends Controller
             'meta' => ['nullable', 'array'],
         ]);
 
+        if (isset($data['seller_id'])) {
+            $this->resolveSellerById((int) $data['seller_id']);
+        }
+
         $offer = Offer::create([
             ...$data,
             'uuid' => (string) Str::uuid(),
@@ -88,15 +92,7 @@ class OfferController extends Controller
                 ]);
             }
 
-            $seller = User::query()->whereRaw('LOWER(email) = ?', [$sellerEmail])->first();
-
-            if (! $seller) {
-                throw ValidationException::withMessages([
-                    'seller_email' => 'Аккаунт продавца с таким email не найден.',
-                ]);
-            }
-
-            $data['seller_id'] = $seller->id;
+            $data['seller_id'] = $this->resolveSellerByEmail($sellerEmail)->id;
         }
 
         $offer->update($data);
@@ -119,7 +115,7 @@ class OfferController extends Controller
         $seller = null;
 
         if ($sellerEmail !== '') {
-            $seller = User::query()->whereRaw('LOWER(email) = ?', [$sellerEmail])->first();
+            $seller = $this->resolveSellerByEmail($sellerEmail, false);
         }
 
         if (! $seller) {
@@ -171,5 +167,35 @@ class OfferController extends Controller
             $offer->buyer_id,
             $offer->seller_id,
         ], true);
+    }
+
+    private function resolveSellerByEmail(string $email, bool $failWhenMissing = true): ?User
+    {
+        $seller = User::query()->whereRaw('LOWER(email) = ?', [mb_strtolower($email)])->first();
+
+        if (! $seller || ! $seller->hasSellerAccount()) {
+            if (! $failWhenMissing) {
+                return null;
+            }
+
+            throw ValidationException::withMessages([
+                'seller_email' => 'Аккаунт продавца с таким email не найден.',
+            ]);
+        }
+
+        return $seller;
+    }
+
+    private function resolveSellerById(int $sellerId): User
+    {
+        $seller = User::query()->findOrFail($sellerId);
+
+        if (! $seller->hasSellerAccount()) {
+            throw ValidationException::withMessages([
+                'seller_id' => 'Выбранный пользователь не является продавцом.',
+            ]);
+        }
+
+        return $seller;
     }
 }

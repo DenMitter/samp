@@ -24,12 +24,17 @@ class RegisteredUserController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'account_type' => ['nullable', 'string', 'in:'.implode(',', [
+                User::ACCOUNT_TYPE_BUYER,
+                User::ACCOUNT_TYPE_SELLER,
+            ])],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
+            'account_type' => $validated['account_type'] ?? User::ACCOUNT_TYPE_BUYER,
             'password' => Hash::make($validated['password']),
         ]);
 

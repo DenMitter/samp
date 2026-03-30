@@ -12,14 +12,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'account_type', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
-    protected $appends = ['is_admin'];
+    public const ACCOUNT_TYPE_BUYER = 'buyer';
+
+    public const ACCOUNT_TYPE_SELLER = 'seller';
+
+    protected $appends = ['is_admin', 'is_seller_account'];
 
     /**
      * Get the attributes that should be cast.
@@ -37,6 +41,11 @@ class User extends Authenticatable
     protected function isAdmin(): Attribute
     {
         return Attribute::get(fn () => $this->hasAdminAccess());
+    }
+
+    protected function isSellerAccount(): Attribute
+    {
+        return Attribute::get(fn () => $this->hasSellerAccount());
     }
 
     public function createdOffers(): HasMany
@@ -77,5 +86,10 @@ class User extends Authenticatable
             ->values();
 
         return $allowedEmails->contains(mb_strtolower(trim($this->email)));
+    }
+
+    public function hasSellerAccount(): bool
+    {
+        return $this->account_type === self::ACCOUNT_TYPE_SELLER;
     }
 }

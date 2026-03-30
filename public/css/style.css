@@ -493,7 +493,8 @@ button,
   font-size: 16px;
 }
 
-.mvpAuthStandaloneInput input {
+.mvpAuthStandaloneInput input,
+.mvpAuthStandaloneInput select {
   flex: 1;
   min-width: 0;
   height: 46px;
@@ -504,6 +505,11 @@ button,
   color: #1b2f43;
   font: inherit;
   font-size: 15px;
+}
+
+.mvpAuthStandaloneInput select {
+  background: transparent;
+  cursor: pointer;
 }
 
 .mvpAuthCaptcha {
@@ -2882,7 +2888,8 @@ body.is-modal-open {
     font-size: 20px;
   }
 
-  .mvpAuthStandaloneInput input {
+  .mvpAuthStandaloneInput input,
+  .mvpAuthStandaloneInput select {
     height: 54px;
     font-size: 16px;
   }
@@ -2969,7 +2976,8 @@ body.is-modal-open {
     font-size: 20px;
   }
 
-  .mvpAuthStandaloneInput input {
+  .mvpAuthStandaloneInput input,
+  .mvpAuthStandaloneInput select {
     height: 54px;
     font-size: 16px;
   }

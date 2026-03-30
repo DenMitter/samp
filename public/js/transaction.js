@@ -347,6 +347,16 @@ function renderActionBox(transaction) {
   button.disabled = false;
   secondaryButton.hidden = false;
 
+  if (stage === 2 && isSeller) {
+    title.textContent = "Ожидание метода оплаты со стороны покупателя";
+    text.textContent = hasDisbursementMethod
+      ? "Способ выплаты уже сохранён. Сейчас ожидается, что покупатель выберет способ оплаты и отправит средства в Escrow."
+      : "Покупатель ещё не выбрал способ оплаты. После того как он укажет способ оплаты и отправит средства в Escrow, вы сможете перейти к подтверждению оплаты.";
+    button.hidden = true;
+    secondaryButton.hidden = true;
+    return;
+  }
+
   if (stage === 1) {
     if (hasPendingModification) {
       if (awaitingConfirmationFrom === Number(state.user?.id || 0)) {

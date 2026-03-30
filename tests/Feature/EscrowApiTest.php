@@ -18,7 +18,7 @@ class EscrowApiTest extends TestCase
             'password' => 'password123',
         ]);
 
-        $seller = User::factory()->create([
+        $seller = User::factory()->seller()->create([
             'email' => 'seller@test.local',
             'password' => 'password123',
         ]);
@@ -97,7 +97,7 @@ class EscrowApiTest extends TestCase
             'password' => 'password123',
         ]);
 
-        $seller = User::factory()->create([
+        $seller = User::factory()->seller()->create([
             'email' => 'seller-uuid@test.local',
             'password' => 'password123',
         ]);
@@ -120,5 +120,70 @@ class EscrowApiTest extends TestCase
             ->assertOk()
             ->assertJsonPath('id', $transaction->id)
             ->assertJsonPath('uuid', $transaction->uuid);
+    }
+
+    public function test_user_can_register_seller_account(): void
+    {
+        $response = $this->post('/register', [
+            'name' => 'Seller User',
+            'email' => 'seller-account@test.local',
+            'account_type' => User::ACCOUNT_TYPE_SELLER,
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+        ]);
+
+        $response->assertRedirect('/dashboard');
+
+        $this->assertDatabaseHas('users', [
+            'email' => 'seller-account@test.local',
+            'account_type' => User::ACCOUNT_TYPE_SELLER,
+        ]);
+    }
+
+    public function test_offer_update_rejects_non_seller_account_as_seller(): void
+    {
+        $buyer = User::factory()->create([
+            'email' => 'buyer-role@test.local',
+        ]);
+
+        $regularUser = User::factory()->create([
+            'email' => 'not-seller@test.local',
+        ]);
+
+        $offer = $this->actingAs($buyer)
+            ->postJson('/api/offers', [
+                'title' => 'Example domain sale',
+                'description' => 'Escrow transaction',
+                'asset_type' => 'domain',
+                'currency' => 'USD',
+                'amount' => 800,
+            ])
+            ->assertCreated()
+            ->json();
+
+        $this->actingAs($buyer)
+            ->patchJson("/api/offers/{$offer['id']}", [
+                'meta' => [
+                    'seller_email' => $regularUser->email,
+                ],
+            ])
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['seller_email']);
+    }
+
+    public function test_transaction_creation_rejects_non_seller_account(): void
+    {
+        $buyer = User::factory()->create();
+        $regularUser = User::factory()->create();
+
+        $this->actingAs($buyer)
+            ->postJson('/api/transactions', [
+                'buyer_id' => $buyer->id,
+                'seller_id' => $regularUser->id,
+                'currency' => 'USD',
+                'amount' => 800,
+            ])
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['seller_id']);
     }
 }
