@@ -87,5 +87,5 @@
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('js/admin-transactions.js') }}"></script>
+  <script src="{{ asset('js/admin-transactions.js') }}?v={{ filemtime(public_path('js/admin-transactions.js')) }}"></script>
 @endpush

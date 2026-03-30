@@ -8,7 +8,7 @@
     <meta name="description" content="{{ $description ?? 'Escrow.com frontend' }}">
     <title>{{ $title ?? 'Escrow.com' }}</title>
     <link rel="stylesheet" href="https://www.escrow.com/build/css/styles.c92d1ca52fd819967d36.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-32x32.png') }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-16x16.png') }}" sizes="16x16">
   </head>
@@ -51,8 +51,8 @@
         </form>
       </div>
     </div>
-    <script src="{{ asset('js/header-menu.js') }}"></script>
+    <script src="{{ asset('js/header-menu.js') }}?v={{ filemtime(public_path('js/header-menu.js')) }}"></script>
     @stack('scripts')
-    <script src="{{ asset('js/support-chat.js') }}"></script>
+    <script src="{{ asset('js/support-chat.js') }}?v={{ filemtime(public_path('js/support-chat.js')) }}"></script>
   </body>
 </html>

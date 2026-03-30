@@ -165,5 +165,5 @@
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('js/offer-start.js') }}"></script>
+  <script src="{{ asset('js/offer-start.js') }}?v={{ filemtime(public_path('js/offer-start.js')) }}"></script>
 @endpush

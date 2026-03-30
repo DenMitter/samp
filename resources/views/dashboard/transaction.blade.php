@@ -309,5 +309,5 @@
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('js/transaction.js') }}"></script>
+  <script src="{{ asset('js/transaction.js') }}?v={{ filemtime(public_path('js/transaction.js')) }}"></script>
 @endpush

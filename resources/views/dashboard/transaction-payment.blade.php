@@ -115,5 +115,5 @@
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('js/transaction-payment.js') }}"></script>
+  <script src="{{ asset('js/transaction-payment.js') }}?v={{ filemtime(public_path('js/transaction-payment.js')) }}"></script>
 @endpush
