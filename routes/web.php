@@ -37,87 +37,64 @@ Route::middleware('auth')->group(function () {
         return view('admin.transactions');
     })->name('admin.transactions.page');
     Route::view('/offers/create', 'dashboard.offer-create')->name('offers.create');
-    Route::get('/offers/{offer}/start', function (string $offer) {
-        $model = Offer::query()
-            ->where('uuid', $offer)
-            ->orWhere('id', $offer)
-            ->firstOrFail();
-
+    Route::get('/offers/{offer}/start', function (Offer $offer) {
         abort_unless(
             auth()->user()?->hasAdminAccess()
-            || in_array(auth()->id(), [$model->creator_id, $model->buyer_id, $model->seller_id], true),
+            || in_array(auth()->id(), [$offer->creator_id, $offer->buyer_id, $offer->seller_id], true),
             403
         );
 
         return view('dashboard.offer-start', [
-            'offerId' => $model->id,
+            'offerId' => $offer->id,
+            'offerKey' => $offer->uuid,
         ]);
     })->name('offers.start');
-    Route::get('/offers/{offer}', function (string $offer) {
-        $model = Offer::query()
-            ->where('uuid', $offer)
-            ->orWhere('id', $offer)
-            ->firstOrFail();
-
+    Route::get('/offers/{offer}', function (Offer $offer) {
         abort_unless(
             auth()->user()?->hasAdminAccess()
-            || in_array(auth()->id(), [$model->creator_id, $model->buyer_id, $model->seller_id], true),
+            || in_array(auth()->id(), [$offer->creator_id, $offer->buyer_id, $offer->seller_id], true),
             403
         );
 
         return view('dashboard.offer', [
-            'offerId' => $model->id,
+            'offerId' => $offer->id,
+            'offerKey' => $offer->uuid,
         ]);
     })->name('offers.show');
-    Route::get('/transactions/{transaction}', function (string $transaction) {
-        $model = Transaction::query()
-            ->where('uuid', $transaction)
-            ->orWhere('id', $transaction)
-            ->firstOrFail();
-
+    Route::get('/transactions/{transaction}', function (Transaction $transaction) {
         abort_unless(
             auth()->user()?->hasAdminAccess()
-            || in_array(auth()->id(), [$model->buyer_id, $model->seller_id], true),
+            || in_array(auth()->id(), [$transaction->buyer_id, $transaction->seller_id], true),
             403
         );
 
         return view('dashboard.transaction', [
-            'transactionId' => $model->id,
-            'transactionKey' => $model->uuid,
+            'transactionId' => $transaction->id,
+            'transactionKey' => $transaction->uuid,
         ]);
     })->name('transactions.show');
-    Route::get('/transactions/{transaction}/payment', function (string $transaction) {
-        $model = Transaction::query()
-            ->where('uuid', $transaction)
-            ->orWhere('id', $transaction)
-            ->firstOrFail();
-
+    Route::get('/transactions/{transaction}/payment', function (Transaction $transaction) {
         abort_unless(
             auth()->user()?->hasAdminAccess()
-            || in_array(auth()->id(), [$model->buyer_id, $model->seller_id], true),
+            || in_array(auth()->id(), [$transaction->buyer_id, $transaction->seller_id], true),
             403
         );
 
         return view('dashboard.transaction-payment', [
-            'transactionId' => $model->id,
-            'transactionKey' => $model->uuid,
+            'transactionId' => $transaction->id,
+            'transactionKey' => $transaction->uuid,
         ]);
     })->name('transactions.payment');
-    Route::get('/transactions/{transaction}/created', function (string $transaction) {
-        $model = Transaction::query()
-            ->where('uuid', $transaction)
-            ->orWhere('id', $transaction)
-            ->firstOrFail();
-
+    Route::get('/transactions/{transaction}/created', function (Transaction $transaction) {
         abort_unless(
             auth()->user()?->hasAdminAccess()
-            || in_array(auth()->id(), [$model->buyer_id, $model->seller_id], true),
+            || in_array(auth()->id(), [$transaction->buyer_id, $transaction->seller_id], true),
             403
         );
 
         return view('dashboard.transaction-created', [
-            'transactionId' => $model->id,
-            'transactionKey' => $model->uuid,
+            'transactionId' => $transaction->id,
+            'transactionKey' => $transaction->uuid,
         ]);
     })->name('transactions.created');
 

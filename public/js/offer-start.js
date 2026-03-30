@@ -11,6 +11,8 @@ const state = {
 
 const pageRoot = document.querySelector("[data-offer-start-page]");
 const offerId = pageRoot?.dataset.offerId || "";
+const offerKey = pageRoot?.dataset.offerKey || "";
+const offerLookupKey = offerKey || offerId;
 const dashboardPath = pageRoot?.dataset.dashboardUrl || "/dashboard";
 const transactionBase = pageRoot?.dataset.transactionBase || "/transactions/";
 const transactionCreatedBase = transactionBase.endsWith("/") ? `${transactionBase}__KEY__/created` : `${transactionBase}/__KEY__/created`;
@@ -271,7 +273,7 @@ function renderOffer(offer) {
 }
 
 async function bootstrap() {
-  if (!offerId) {
+  if (!offerLookupKey) {
     window.location.href = homePath;
     return;
   }
@@ -279,7 +281,7 @@ async function bootstrap() {
   try {
     const [me, offer] = await Promise.all([
       apiRequest("/me"),
-      apiRequest(`/offers/${offerId}`),
+      apiRequest(`/offers/${offerLookupKey}`),
     ]);
 
     state.user = me.user;

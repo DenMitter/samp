@@ -8,6 +8,8 @@ const state = {
 
 const pageRoot = document.querySelector("[data-transaction-created-page]");
 const transactionId = pageRoot?.dataset.transactionId || "";
+const transactionKey = pageRoot?.dataset.transactionKey || "";
+const transactionLookupKey = transactionKey || transactionId;
 const transactionBase = pageRoot?.dataset.transactionBase || "/transactions/";
 const dashboardPath = pageRoot?.dataset.dashboardUrl || "/dashboard";
 const toast = document.querySelector("[data-toast]");
@@ -71,7 +73,7 @@ function bindShareLinks(url) {
 }
 
 async function copyLink() {
-  const url = buildTransactionUrl(state.transaction?.uuid || transactionId);
+  const url = buildTransactionUrl(state.transaction?.uuid || transactionLookupKey);
 
   try {
     await navigator.clipboard.writeText(url);
@@ -82,13 +84,13 @@ async function copyLink() {
 }
 
 async function bootstrap() {
-  if (!transactionId) {
+  if (!transactionLookupKey) {
     window.location.href = homePath;
     return;
   }
 
   try {
-    state.transaction = await apiRequest(`/transactions/${transactionId}`);
+    state.transaction = await apiRequest(`/transactions/${transactionLookupKey}`);
     bindShareLinks(buildTransactionUrl(state.transaction.uuid || state.transaction.id));
   } catch (error) {
     showToast(error.message, true);

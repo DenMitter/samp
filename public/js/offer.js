@@ -10,6 +10,8 @@ const state = {
 
 const pageRoot = document.querySelector("[data-offer-page]");
 const offerId = pageRoot?.dataset.offerId || "";
+const offerKey = pageRoot?.dataset.offerKey || "";
+const offerLookupKey = offerKey || offerId;
 const dashboardPath = pageRoot?.dataset.dashboardUrl || "/dashboard";
 const transactionBasePath = `${homePath.replace(/\/$/, "")}/transactions`;
 const toast = document.querySelector("[data-toast]");
@@ -218,7 +220,7 @@ function bindUi() {
 }
 
 async function bootstrap() {
-  if (!offerId) {
+  if (!offerLookupKey) {
     window.location.href = homePath;
     return;
   }
@@ -226,7 +228,7 @@ async function bootstrap() {
   try {
     const [me, offer] = await Promise.all([
       apiRequest("/me"),
-      apiRequest(`/offers/${offerId}`),
+      apiRequest(`/offers/${offerLookupKey}`),
     ]);
 
     state.user = me.user;

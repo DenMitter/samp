@@ -10,6 +10,8 @@ const state = {
 
 const pageRoot = document.querySelector("[data-transaction-payment-page]");
 const transactionId = pageRoot?.dataset.transactionId || "";
+const transactionKey = pageRoot?.dataset.transactionKey || "";
+const transactionLookupKey = transactionKey || transactionId;
 const transactionUrl = pageRoot?.dataset.transactionUrl || "/dashboard";
 const toast = document.querySelector("[data-toast]");
 const form = document.querySelector("[data-payment-page-form]");
@@ -214,13 +216,13 @@ async function handleSubmit(event) {
 }
 
 async function bootstrap() {
-  if (!transactionId) {
+  if (!transactionLookupKey) {
     window.location.href = homePath;
     return;
   }
 
   try {
-    const transaction = await apiRequest(`/transactions/${transactionId}`);
+    const transaction = await apiRequest(`/transactions/${transactionLookupKey}`);
     renderTransaction(transaction);
   } catch (error) {
     showToast(error.message, true);

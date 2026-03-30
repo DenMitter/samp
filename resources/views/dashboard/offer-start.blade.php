@@ -22,6 +22,7 @@
     class="mvpReviewMain"
     data-offer-start-page
     data-offer-id="{{ $offerId }}"
+    data-offer-key="{{ $offerKey ?? '' }}"
     data-dashboard-url="{{ route('dashboard.page') }}"
     data-transaction-base="{{ rtrim(route('transactions.show', ['transaction' => '__KEY__']), '__KEY__') }}"
   >

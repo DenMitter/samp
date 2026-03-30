@@ -10,6 +10,8 @@ const state = {
 
 const pageRoot = document.querySelector("[data-transaction-page]");
 const transactionId = pageRoot?.dataset.transactionId || "";
+const transactionKey = pageRoot?.dataset.transactionKey || "";
+const transactionLookupKey = transactionKey || transactionId;
 const transactionPaymentUrl = pageRoot?.dataset.transactionPaymentUrl || "";
 const dashboardPath = pageRoot?.dataset.dashboardUrl || "/dashboard";
 const toast = document.querySelector("[data-toast]");
@@ -697,7 +699,7 @@ function bindUi() {
 }
 
 async function bootstrap() {
-  if (!transactionId) {
+  if (!transactionLookupKey) {
     window.location.href = homePath;
     return;
   }
@@ -705,7 +707,7 @@ async function bootstrap() {
   try {
     const [me, transaction] = await Promise.all([
       apiRequest("/me"),
-      apiRequest(`/transactions/${transactionId}`),
+      apiRequest(`/transactions/${transactionLookupKey}`),
     ]);
 
     state.user = me.user;

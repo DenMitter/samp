@@ -27,6 +27,7 @@
     class="mvpCreatedMain"
     data-transaction-created-page
     data-transaction-id="{{ $transactionId }}"
+    data-transaction-key="{{ $transactionKey ?? '' }}"
     data-transaction-base="{{ rtrim(route('transactions.show', ['transaction' => '__KEY__']), '__KEY__') }}"
     data-dashboard-url="{{ route('dashboard.page') }}"
   >

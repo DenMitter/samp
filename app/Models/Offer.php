@@ -26,12 +26,19 @@ class Offer extends Model
 {
     public function resolveRouteBinding($value, $field = null): ?Model
     {
-        return $this->newQuery()
-            ->when($field, fn ($query) => $query->where($field, $value))
-            ->when(! $field, fn ($query) => $query
-                ->where('id', $value)
-                ->orWhere('uuid', $value))
-            ->firstOrFail();
+        $query = $this->newQuery();
+
+        if ($field) {
+            return $query->where($field, $value)->firstOrFail();
+        }
+
+        $normalizedValue = trim((string) $value);
+
+        if ($normalizedValue !== '' && ctype_digit($normalizedValue)) {
+            return $query->whereKey((int) $normalizedValue)->firstOrFail();
+        }
+
+        return $query->where('uuid', $normalizedValue)->firstOrFail();
     }
 
     protected function casts(): array

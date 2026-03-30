@@ -22,6 +22,7 @@
     class="mvpAccountMain"
     data-offer-page
     data-offer-id="{{ $offerId }}"
+    data-offer-key="{{ $offerKey ?? '' }}"
     data-dashboard-url="{{ route('dashboard.page') }}"
   >
     <section class="section">
